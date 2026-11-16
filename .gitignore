@@ -1,0 +1,12 @@
+/dist/
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
+/vendor/
+/node_modules/
+/tests/.downloads/
+/tests/results/
+/tests/node_modules/

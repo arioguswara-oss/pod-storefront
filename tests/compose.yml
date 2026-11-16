@@ -1,0 +1,40 @@
+name: pod-storefront-tests
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: pod_fixture
+      MARIADB_USER: pod_fixture
+      MARIADB_PASSWORD: fixture-only
+      MARIADB_ROOT_PASSWORD: fixture-root-only
+    tmpfs:
+      - /var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  wordpress:
+    image: wordpress:php8.3-fpm-alpine
+    entrypoint: ["sh", "/fixtures/serve.sh"]
+    ports:
+      - "127.0.0.1:8889:8000"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: pod_fixture
+      WORDPRESS_DB_USER: pod_fixture
+      WORDPRESS_DB_PASSWORD: fixture-only
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('POD_STOREFRONT_TEST_FIXTURE', true);
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        define('DISABLE_WP_CRON', true);
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./:/fixtures:ro
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  wordpress_data:
