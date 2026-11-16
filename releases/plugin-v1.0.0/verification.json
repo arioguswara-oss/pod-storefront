@@ -1,0 +1,172 @@
+{
+  "component": "pod-simple-checkout",
+  "version": "1.0.0",
+  "wordpress": "7.1.4",
+  "woocommerce": "11.3.0",
+  "php_runtime": "8.3.36",
+  "php_syntax_targets": [
+    "7.4.33",
+    "8.3.36",
+    "8.4.27"
+  ],
+  "packaging_tests_passed": 6,
+  "http_cases": [
+    {
+      "name": "Simple addition, native mini-cart fragments and exact count",
+      "status": "passed"
+    },
+    {
+      "name": "Replay and concurrent identical requests add exactly once",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid nonce/session token/identifier cannot reach the native handler",
+      "status": "passed"
+    },
+    {
+      "name": "Variable product requires matching size/color and valid variation",
+      "status": "passed"
+    },
+    {
+      "name": "Unavailable stock, quantity limits and sold-individually products",
+      "status": "passed"
+    },
+    {
+      "name": "Extension validation rejects both intents without cart loss",
+      "status": "passed"
+    },
+    {
+      "name": "Buy Now preserves existing cart and only its intent skips cart",
+      "status": "passed"
+    },
+    {
+      "name": "Replacement is opt-in, Buy Now only, and invalid input preserves cart",
+      "status": "passed"
+    },
+    {
+      "name": "Feature flags enforce disabled Buy Now/AJAX/direct-checkout behavior",
+      "status": "passed"
+    },
+    {
+      "name": "Replacement can reduce a stock-limit quantity and rolls back failed candidate validation",
+      "status": "passed"
+    },
+    {
+      "name": "WooCommerce native cart redirect preference remains respected",
+      "status": "passed"
+    },
+    {
+      "name": "Settings sanitization permits known booleans only and preserves safe defaults",
+      "status": "passed"
+    }
+  ],
+  "browser_cases": [
+    {
+      "name": "AJAX \u2192 variable Buy Now \u2192 native Classic Checkout 320px",
+      "status": "passed"
+    },
+    {
+      "name": "AJAX \u2192 variable Buy Now \u2192 native Classic Checkout 390px",
+      "status": "passed"
+    },
+    {
+      "name": "AJAX \u2192 variable Buy Now \u2192 native Classic Checkout 768px",
+      "status": "passed"
+    },
+    {
+      "name": "AJAX \u2192 variable Buy Now \u2192 native Classic Checkout 1440px",
+      "status": "passed"
+    },
+    {
+      "name": "Empty checkout follows WooCommerce back to the accessible empty cart",
+      "status": "passed"
+    },
+    {
+      "name": "Rapid repeated clicks and lost-response retry add exactly once",
+      "status": "passed"
+    },
+    {
+      "name": "AJAX off: standard Add to Cart and Buy Now POST/redirect fallback",
+      "status": "passed"
+    },
+    {
+      "name": "JavaScript unavailable: native simple Add to Cart and Buy Now work",
+      "status": "passed"
+    },
+    {
+      "name": "Native zero-value synthetic order and validation (guest)",
+      "status": "passed"
+    },
+    {
+      "name": "Native zero-value synthetic order and validation (logged in)",
+      "status": "passed"
+    },
+    {
+      "name": "Guest-disabled setting is honored, no checkout field bypass",
+      "status": "passed"
+    },
+    {
+      "name": "Native Checkout Block compatibility 320px",
+      "status": "passed"
+    },
+    {
+      "name": "Native Checkout Block compatibility 390px",
+      "status": "passed"
+    },
+    {
+      "name": "Native Checkout Block compatibility 768px",
+      "status": "passed"
+    },
+    {
+      "name": "Native Checkout Block compatibility 1440px",
+      "status": "passed"
+    },
+    {
+      "name": "WooCommerce admin settings capability, nonce and safe defaults",
+      "status": "passed"
+    },
+    {
+      "name": "Independent theme and presentation-disabled compatibility modes",
+      "status": "passed"
+    },
+    {
+      "name": "Product opt-out and file uploads use standard WooCommerce fallback",
+      "status": "passed"
+    }
+  ],
+  "parallel_duplicate_test": {
+    "passed": 20,
+    "parallel_requests_per_round": 2,
+    "expected_count": 1
+  },
+  "lifecycle": [
+    "Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS",
+    "Deactivate/reactivate without fatal errors or record changes: PASS",
+    "Missing WooCommerce: inert frontend and clear administrator notice: PASS"
+  ],
+  "theme_regression_checks": 24,
+  "live_checkout_read_only_detection": {
+    "page_id": 9,
+    "content": "[woocommerce_checkout]",
+    "mode": "classic"
+  },
+  "live_modified": false,
+  "paid_transactions_tested": false,
+  "github_actions": "Not claimed as passed; see PR status and verification report.",
+  "zip_sha256": "b1ddb3bc1b76e829a77eaeedef7bee73955d931dd81b7244aa27d4394da686e5",
+  "source_files_sha256": {
+    "pod-simple-checkout/CHANGELOG.txt": "662cac97aad3b1e6b084a9c229757445963bb7a7ec297ed2c6fc7f0526ad4ddf",
+    "pod-simple-checkout/COMPATIBILITY.txt": "9c610df50e650f578787cb924d7627d52543d42d14dd08f001ccbe5358897d57",
+    "pod-simple-checkout/INSTALLATION.txt": "3f95dfc1bd8c5730b011602662fd45275e64bd225075b138ee91b6a76a60ff3c",
+    "pod-simple-checkout/SECURITY.txt": "9c1f8871d5234829161ffab689e353cfc9d3a0bfceca778687ddcffb06106632",
+    "pod-simple-checkout/assets/checkout.css": "42367ed521f1460ed310c8d7b522b7f87c6714818c31500b41c49633a63a9426",
+    "pod-simple-checkout/assets/product.css": "9fd5044db44addba0bfebc045bfd754b4ef1109475ad34539bc7ebac3fb94d64",
+    "pod-simple-checkout/assets/product.js": "8658c8cee9aa9647f1e039eeb03819301466154906ec3af691cf38166e383df2",
+    "pod-simple-checkout/includes/class-cart.php": "59d11f54464dae58c513754bc67de8c859fbb6d4296c51cf4a0725edb95d1463",
+    "pod-simple-checkout/includes/class-checkout.php": "b8d09d434b130771e98dd57cbd90018025ff6256f86c37b31c1c5f1004872e5b",
+    "pod-simple-checkout/includes/class-plugin.php": "18b11e172df495a8bf1217c39a7052d9996697292c9f762139de282f7cfb15c3",
+    "pod-simple-checkout/includes/class-settings.php": "3820b3802f5aef5a28046f721565bbec301577da56ed818ff1596f95730cd0f8",
+    "pod-simple-checkout/pod-simple-checkout.php": "a2f36e57c61e05e33218748a609b35ed83bfa504c92a8b87aa6114dc80c61936",
+    "pod-simple-checkout/readme.txt": "817c17db415df8d47f05650fd7be5b483049fd377f31ff1bcbe56327d38ff9fc"
+  }
+}

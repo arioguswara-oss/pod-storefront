@@ -18,6 +18,9 @@ COMPONENTS = {
     "plugin": ("plugins", "pod-simple-checkout", {
         "pod-simple-checkout.php": "Plugin Name: POD Simple Checkout",
         "readme.txt": None,
+        "includes/class-cart.php": None, "includes/class-plugin.php": None,
+        "includes/class-settings.php": None, "includes/class-checkout.php": None,
+        "assets/product.js": None, "assets/product.css": None, "assets/checkout.css": None,
     }),
 }
 ALLOWED_SUFFIXES = {".php", ".css", ".js", ".json", ".txt", ".png", ".jpg", ".jpeg", ".svg", ".webp", ".woff", ".woff2", ".mo", ".po", ".pot"}
@@ -53,16 +56,19 @@ def build(output: Path, component: str = "all", root: Path = ROOT) -> list:
                 continue
             if path.is_file() and path.suffix.lower() in ALLOWED_SUFFIXES:
                 files.append(path)
-        prepared.append((kind, slug, version, release["status"], source, files, required))
+        archive_name = release.get("archive_name", f"{slug}-{version}.zip")
+        if archive_name not in {f"{slug}-{version}.zip", f"{slug}-v{version}.zip"}:
+            raise ValueError(f"Invalid archive name for {slug}")
+        prepared.append((kind, slug, version, release["status"], source, files, required, archive_name))
 
     output = output.resolve()
-    for _, _, _, _, source, _, _ in prepared:
+    for _, _, _, _, source, _, _, _ in prepared:
         if output == source.resolve() or source.resolve() in output.parents:
             raise ValueError("Output directory cannot be inside a component")
     output.mkdir(parents=True, exist_ok=True)
     manifest = []
-    for kind, slug, version, status, source, files, required in prepared:
-        archive = output / f"{slug}-{version}.zip"
+    for kind, slug, version, status, source, files, required, archive_name in prepared:
+        archive = output / archive_name
         expected = {f"{slug}/{path.relative_to(source).as_posix()}" for path in files}
         with ZipFile(archive, "w", compression=ZIP_DEFLATED) as package:
             for path in files:

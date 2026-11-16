@@ -1,0 +1,86 @@
+POD Simple Checkout 1.0.0 — compatibility modes and limits
+
+NATIVE SIMPLE / VARIABLE PRODUCT FORMS
+
+Buy Now is inserted through woocommerce_after_add_to_cart_button for purchasable,
+in-stock native simple/variable products. Size/color selections and quantity are
+submitted with the original form data. WooCommerce add-to-cart validation hooks
+and WC_Cart::add_to_cart own stock, attribute matching and line data. Normal
+catalog/archive AJAX remains WooCommerce's own feature and setting.
+
+Grouped, external, composite, bundle, subscription and block-based product
+purchase interfaces are not enhanced automatically. They retain their native
+behavior. Test any custom product type or addon before opting it in.
+
+Forms with selected file uploads use standard POST instead of AJAX. Non-submit
+express-payment controls are not intercepted. To opt a product out of AJAX:
+
+add_filter('pod_sc_ajax_supported', function ($enabled, $product) {
+    return false; // Apply your product/extension condition here.
+}, 10, 2);
+
+This is an integration filter, not a suggestion to paste code into live during
+development. Third-party addons may depend on their own JS/handlers; vanilla
+field preservation and validation hooks do not certify every extension.
+
+CLASSIC CHECKOUT
+
+The configured page contains [woocommerce_checkout]. The native WooCommerce
+template remains in use. No fields are removed, made optional, reordered or
+renamed. Wrappers around native hooks and a checkout-only item-name filter add
+layout and thumbnails. Core summary subtotal/discount/shipping/tax/total, payment
+and Place Order remain native. Guest/account requirements are honored.
+
+CHECKOUT BLOCKS
+
+Detected via the native woocommerce/checkout block in the configured page. The
+plugin applies only scoped styling and never injects the Classic wrappers.
+Native Blocks supply thumbnails, variations, quantities, totals, coupon/address
+controls, shipping, terms and payment/Place Order. Buy Now can redirect to either
+checkout type. Product purchase Blocks themselves retain native behavior.
+
+UNKNOWN / PAGE-BUILDER CHECKOUT
+
+UI enhancements are off unless a supported checkout is detected. No page is
+converted, migrated or replaced. Existing checkout remains the destination.
+Third-party Classic templates must preserve the standard WooCommerce before/
+after customer-details and order-review hooks for balanced wrappers. Disable
+Checkout UI if a template/plugin omits or rearranges these hooks.
+
+Integration filters:
+- pod_sc_checkout_mode: return 'classic', 'blocks', or 'unknown'.
+- pod_sc_checkout_ui_supported: return false to keep native presentation.
+
+INDEPENDENT OF THE THEME
+
+The plugin does not edit theme files or require POD Store Theme. POD header
+navigation/actions are visually reduced on enhanced checkout; other themes keep
+their own header. Existing mini-cart fragment callbacks are preserved, and the
+native added_to_cart event keeps WooCommerce cart integrations informed.
+
+REPLACEMENT / REQUEST SAFETY LIMITS
+
+Cart replacement is off by default and affects Buy Now only. A candidate cart is
+validated in memory through native hooks and the WooCommerce cart API. Original
+lines are restored on failure; accepted candidates replace old lines through
+native removal hooks before persistence. This permits reducing an existing
+stock-limit quantity without counting that old quantity twice. Coupons are
+retained/revalidated by WooCommerce. Custom addons with irreversible external
+side effects still require their own integration test.
+
+Submission controls and a session lock protect POD commands; unrelated native
+or third-party cart requests do not participate in that lock. Simultaneous
+different purchases in multiple browser tabs follow WooCommerce's underlying
+session behavior and are not a cross-extension transaction system.
+
+No-JavaScript variable selection is limited by WooCommerce's native form. The
+server reports missing/mismatched options; it does not invent product choices.
+Cached no-JavaScript form nonces can expire; failure is safe and visible. AJAX
+uses a fresh uncached context for every command.
+
+PAYMENTS / CACHE
+
+No gateway registration, filtering, settings changes, card fields, external
+payment requests or custom order creation are implemented. Testing a live
+gateway, address-autocomplete vendor or production LiteSpeed/CDN stack is not
+part of the local synthetic acceptance suite.

@@ -1,0 +1,12 @@
+1.0.0
+- Native simple/variable Buy Now with direct checkout for that intent only.
+- Progressive AJAX product forms with native mini-cart/count fragments.
+- Nonce/session checks, in-flight locks and repeated-request protection.
+- Native stock/variation/quantity/extension validation and clear errors.
+- Preserve existing cart by default; optional post-validation replacement.
+- Classic checkout wrappers/thumbnail summary; native Blocks styling mode.
+- Capability-protected settings with safe defaults and a checkout mode indicator.
+- No theme edits, order migration, gateway changes or live deployment.
+
+0.1.0-dev
+- Initial scaffold.

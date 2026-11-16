@@ -30,13 +30,16 @@ wp core install --url=http://127.0.0.1:8889 --title='POD Test Fixture' --admin_u
 wp plugin install /fixtures/.downloads/woocommerce.zip --activate
 wp rewrite structure '/%postname%/'
 wp eval-file /fixtures/fixture.php
+wp eval-file /fixtures/plugin-fixture.php
 wp option get stylesheet > tests/results/previous-theme.txt
 wp eval-file /fixtures/snapshot.php > tests/results/before.json
 container=$(docker compose -f tests/compose.yml ps -q wordpress)
 docker cp dist/pod-store-theme-0.1.0.zip "$container:/tmp/pod-store-theme.zip"
-docker cp dist/pod-simple-checkout-0.1.0-dev.zip "$container:/tmp/pod-simple-checkout.zip"
+docker cp dist/pod-simple-checkout-v1.0.0.zip "$container:/tmp/pod-simple-checkout.zip"
 wp theme install /tmp/pod-store-theme.zip --activate
 wp plugin install /tmp/pod-simple-checkout.zip --activate
+docker compose -f tests/compose.yml exec -T wordpress mkdir -p wp-content/mu-plugins
+docker cp tests/plugin-fixture-hooks.php "$container:/var/www/html/wp-content/mu-plugins/pod-fixture-hooks.php"
 wp eval-file /fixtures/snapshot.php > tests/results/after.json
 cmp tests/results/before.json tests/results/after.json
 wp core version > tests/results/wordpress-version.txt

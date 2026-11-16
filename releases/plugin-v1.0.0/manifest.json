@@ -1,0 +1,10 @@
+[
+  {
+    "component": "plugin",
+    "file": "pod-simple-checkout-v1.0.0.zip",
+    "version": "1.0.0",
+    "status": "review-candidate",
+    "sha256": "b1ddb3bc1b76e829a77eaeedef7bee73955d931dd81b7244aa27d4394da686e5",
+    "files": 13
+  }
+]

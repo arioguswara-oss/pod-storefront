@@ -1,0 +1,38 @@
+POD Simple Checkout 1.0.0 — security and data scope
+
+- Public cart commands require a verified WordPress nonce. AJAX additionally
+  requires a random token bound to the visitor's native WooCommerce session.
+  Context is obtained through an uncached same-origin WooCommerce endpoint.
+- The native WC_Form_Handler is suppressed only on POD AJAX routes and handled
+  Buy Now POSTs, preventing an unverified or second native add before dispatch.
+- Product IDs, variation ownership, quantity and required attributes are checked;
+  the native WooCommerce validation filters and cart API remain authoritative.
+- A UUID identifies one attempt. Replay records store only a payload fingerprint,
+  native cart key, redirect and replay status, scoped to the WC session using an
+  HMAC. They expire after 15 minutes through WordPress transients. They are not
+  an order, payment or customer-information store.
+- Same-page retries after uncertain network errors reuse the identifier. After
+  expiry, changing the payload or reloading the page, inspect the bag before
+  adding again. A deduplicated command never silently re-adds a removed item;
+  initiate a new deliberate addition with a fresh request identifier.
+- Session-scoped locks use non-autoloaded plugin options and atomic insertion.
+  They are acquired before WooCommerce initializes session data and held until
+  native session saving completes. Busy requests return without stale cart data
+  being loaded/saved. WordPress add_option is not used as a compare-and-set lock.
+  Ownership-checked deletion affects only that plugin lock. A crashed request's
+  lock becomes reclaimable after five minutes. No WooCommerce database tables
+  are created, migrated or directly edited.
+- Only plugin settings and temporary request metadata are stored by this code.
+  Native WooCommerce owns cart sessions and all legitimate checkout writes.
+- Admin settings require manage_woocommerce and the WordPress Settings API nonce.
+  Unknown setting keys are dropped; only explicit yes values enable flags.
+- Dynamic responses send no-cache headers and LiteSpeed's documented per-response
+  no-cache action. No cache plugin, Redis or CDN configuration is written.
+- No activation/deactivation migration, product/category/image/order deletion,
+  gateway configuration or raw card data processing is performed. Checkout JS
+  and payment submission remain WooCommerce's own code.
+- Nonces are CSRF protection, not login or payment authorization. WooCommerce
+  independently enforces guest/account, stock, address, terms and order rules.
+
+Use current supported WordPress/WooCommerce/PHP versions. Review third-party
+cart/checkout extensions and real cache behavior before owner-approved activation.
