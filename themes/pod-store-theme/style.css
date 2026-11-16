@@ -1,0 +1,60 @@
+/*
+Theme Name: POD Store Theme
+Description: Kerangka theme WooCommerce minimalis, putih bersih, dan mobile-first untuk POD Storefront.
+Version: 0.1.0-dev
+Requires at least: 6.5
+Requires PHP: 7.4
+Text Domain: pod-store-theme
+*/
+
+:root {
+	color-scheme: light;
+	--pod-content-width: 72rem;
+	--pod-border: #e5e5e5;
+}
+
+* { box-sizing: border-box; }
+body {
+	margin: 0;
+	background: #fff;
+	color: #171717;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	line-height: 1.6;
+}
+a { color: inherit; text-underline-offset: 0.2em; }
+img { max-width: 100%; height: auto; }
+button, input, select, textarea { font: inherit; max-width: 100%; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.pod-container { width: min(var(--pod-content-width), calc(100% - 2rem)); margin-inline: auto; }
+.pod-header, .pod-footer { padding-block: 1.25rem; }
+.pod-header { border-bottom: 1px solid var(--pod-border); }
+.pod-footer { border-top: 1px solid var(--pod-border); }
+.pod-site-title { font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+.pod-main { min-height: 60vh; padding-block: 2rem; overflow-wrap: anywhere; }
+.pod-entry + .pod-entry { margin-top: 2rem; }
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+.screen-reader-text:focus {
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	z-index: 100000;
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0.75rem 1rem;
+	clip-path: none;
+	background: #fff;
+}
+@media (min-width: 48rem) {
+	.pod-container { width: min(var(--pod-content-width), calc(100% - 4rem)); }
+	.pod-main { padding-block: 3rem; }
+}
