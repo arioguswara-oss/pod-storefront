@@ -44,7 +44,7 @@ final class POD_SC_Cart {
 		$endpoint = isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) ? sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- prevents native mutation; does not authorize one.
 		if ( in_array( $endpoint, array( 'pod_sc_add', 'pod_sc_context', 'pod_sc_bag', 'pod_sc_bag_change', 'pod_sc_product' ), true ) ) {
 			// WC_Form_Handler runs before WC AJAX dispatch. Only our verified command may add this POST.
-			unset( $_REQUEST['add-to-cart'] );
+			foreach ( array( 'add-to-cart', 'apply_coupon', 'remove_coupon', 'remove_item', 'undo_item', 'update_cart', 'proceed' ) as $command ) { unset( $_REQUEST[ $command ] ); }
 		}
 	}
 
@@ -210,7 +210,7 @@ final class POD_SC_Cart {
 		}
 	}
 
-	private static function fragments() {
+	public static function fragments() {
 		ob_start();
 		woocommerce_mini_cart();
 		$mini_cart = ob_get_clean();

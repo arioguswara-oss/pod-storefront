@@ -12,6 +12,8 @@ final class POD_SC_Shopping_UX {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'assets' ), 40 );
 		add_action( 'wp_footer', array( __CLASS__, 'dialog' ) );
 		add_action( 'wc_ajax_pod_sc_product', array( __CLASS__, 'product' ) );
+		add_action( 'wc_ajax_pod_sc_bag', array( __CLASS__, 'bag' ) );
+		add_action( 'wc_ajax_pod_sc_bag_change', array( __CLASS__, 'change' ) );
 	}
 
 	public static function catalog_button( $html, $product, $args ) {
@@ -26,6 +28,8 @@ final class POD_SC_Shopping_UX {
 		wp_add_inline_script( 'pod-sc-sheets', 'window.podSheets = ' . wp_json_encode( array(
 			'productUrl' => WC_AJAX::get_endpoint( 'pod_sc_product' ),
 			'cartUrl' => wc_get_cart_url(),
+			'bagUrl' => WC_AJAX::get_endpoint( 'pod_sc_bag' ),
+			'changeUrl' => WC_AJAX::get_endpoint( 'pod_sc_bag_change' ),
 		), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ) . ';', 'before' );
 	}
 
@@ -64,5 +68,102 @@ final class POD_SC_Shopping_UX {
 		$GLOBALS['product'] = $previous_product;
 		$GLOBALS['post'] = $previous_post;
 		wp_send_json( array( 'success' => true, 'html' => $html ) );
+	}
+
+	/** Always render totals and prices through WooCommerce, including extension filters. */
+	public static function bag_html() {
+		ob_start();
+		if ( WC()->cart->is_empty() ) {
+			echo '<div class="pod-sc-empty"><p>' . esc_html__( 'Your bag is empty.', 'pod-simple-checkout' ) . '</p><a href="' . esc_url( wc_get_page_permalink( 'shop' ) ) . '">' . esc_html__( 'Continue shopping', 'pod-simple-checkout' ) . '</a></div>';
+		} else {
+			echo '<ul class="pod-sc-bag-items">';
+			foreach ( WC()->cart->get_cart() as $key => $item ) {
+				$product = apply_filters( 'woocommerce_cart_item_product', $item['data'], $item, $key );
+				if ( ! $product || ! $product->exists() || ! apply_filters( 'woocommerce_widget_cart_item_visible', true, $item, $key ) ) { continue; }
+				$args = apply_filters( 'woocommerce_quantity_input_args', array( 'input_value' => $item['quantity'], 'min_value' => $product->get_min_purchase_quantity(), 'max_value' => $product->get_max_purchase_quantity(), 'step' => 1 ), $product );
+				?>
+				<li class="pod-sc-bag-item" data-key="<?php echo esc_attr( $key ); ?>">
+					<a class="pod-sc-bag-image" href="<?php echo esc_url( $product->get_permalink( $item ) ); ?>"><?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_thumbnail', $product->get_image( 'woocommerce_thumbnail' ), $item, $key ) ); ?></a>
+					<div class="pod-sc-bag-detail"><a class="pod-sc-bag-name" href="<?php echo esc_url( $product->get_permalink( $item ) ); ?>"><?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_name', esc_html( $product->get_name() ), $item, $key ) ); ?></a>
+					<?php echo wp_kses_post( wc_get_formatted_cart_item_data( $item ) ); ?>
+					<div class="pod-sc-line-price"><?php echo wp_kses_post( apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $product, $item['quantity'] ), $item, $key ) ); ?></div>
+					<div class="pod-sc-line-actions"><div class="quantity"><button class="pod-sc-step" type="button" data-delta="-1" aria-label="<?php esc_attr_e( 'Decrease quantity', 'pod-simple-checkout' ); ?>">−</button><input class="qty" type="number" aria-label="<?php echo esc_attr( sprintf( __( 'Quantity for %s', 'pod-simple-checkout' ), $product->get_name() ) ); ?>" value="<?php echo esc_attr( $item['quantity'] ); ?>" min="<?php echo esc_attr( $args['min_value'] ); ?>" <?php if ( $args['max_value'] > 0 ) : ?>max="<?php echo esc_attr( $args['max_value'] ); ?>"<?php endif; ?> step="<?php echo esc_attr( $args['step'] ); ?>"><button class="pod-sc-step" type="button" data-delta="1" aria-label="<?php esc_attr_e( 'Increase quantity', 'pod-simple-checkout' ); ?>">+</button></div><button class="pod-sc-remove" type="button" aria-label="<?php echo esc_attr( sprintf( __( 'Remove %s', 'pod-simple-checkout' ), $product->get_name() ) ); ?>"><?php esc_html_e( 'Remove', 'pod-simple-checkout' ); ?></button></div>
+					</div>
+				</li>
+				<?php
+			}
+			echo '</ul><details class="pod-sc-native-totals"><summary>' . esc_html__( 'Shipping, discounts & totals', 'pod-simple-checkout' ) . '</summary>';
+			woocommerce_cart_totals();
+			echo '</details><footer class="pod-sc-bag-footer"><div><span>' . esc_html__( 'Subtotal', 'pod-simple-checkout' ) . '</span><strong>';
+			wc_cart_totals_subtotal_html();
+			echo '</strong></div><p>' . esc_html__( 'Shipping and taxes confirmed at checkout.', 'pod-simple-checkout' ) . '</p><a class="pod-sc-checkout" href="' . esc_url( wc_get_checkout_url() ) . '">' . esc_html__( 'Checkout', 'pod-simple-checkout' ) . '</a><a class="pod-sc-full-bag" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html__( 'View full bag & coupons', 'pod-simple-checkout' ) . '</a></footer>';
+		}
+		return ob_get_clean();
+	}
+
+	private static function response( $extra = array() ) {
+		WC()->cart->calculate_totals();
+		wp_send_json( array_merge( array( 'success' => true, 'html' => self::bag_html(), 'count' => WC()->cart->get_cart_contents_count(), 'cart_hash' => WC()->cart->get_cart_hash(), 'fragments' => POD_SC_Cart::fragments(), 'notices' => wp_kses_post( wc_print_notices( true ) ) ), $extra ) );
+	}
+
+	public static function bag() {
+		POD_SC_Plugin::no_cache();
+		if ( ! self::enabled() ) { wp_send_json( array( 'success' => false ), 404 ); }
+		self::response();
+	}
+
+	/** Absolute quantities + session-scoped command IDs make an uncertain retry safe. */
+	public static function change() {
+		POD_SC_Plugin::no_cache();
+		if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) ) { wp_send_json( array( 'success' => false ), 405 ); }
+		try {
+			$data = wc_clean( wp_unslash( $_POST ) ); // phpcs:ignore WordPress.Security.NonceVerification -- verified below before any mutation.
+			$scalar = static function ( $key ) use ( $data ) { return isset( $data[ $key ] ) && is_scalar( $data[ $key ] ) ? (string) $data[ $key ] : ''; };
+			$expected = WC()->session->get( 'pod_sc_csrf', '' );
+			if ( ! self::enabled() || ! wp_verify_nonce( $scalar( 'pod_sc_nonce' ), 'pod_sc_add' ) || ! is_string( $expected ) || ! $expected || ! hash_equals( $expected, $scalar( 'pod_sc_session_token' ) ) ) { throw new RuntimeException( __( 'Your bag session has changed. Reopen your bag and retry.', 'pod-simple-checkout' ), 403 ); }
+			$id = $scalar( 'pod_sc_request_id' );
+			$key = $scalar( 'key' );
+			$action = $scalar( 'action' );
+			if ( ! preg_match( '/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i', $id ) || ! preg_match( '/^[a-f0-9]{32}$/', $key ) || ! in_array( $action, array( 'quantity', 'remove' ), true ) ) { throw new RuntimeException( __( 'Invalid bag update. Reopen your bag.', 'pod-simple-checkout' ), 400 ); }
+			$request_key = 'pod_sc_bag_req_' . hash_hmac( 'sha256', WC()->session->get_customer_id() . $id, wp_salt( 'nonce' ) );
+			$fingerprint = hash( 'sha256', wp_json_encode( array( $key, $action, $scalar( 'quantity' ) ) ) );
+			$previous = get_transient( $request_key );
+			if ( $previous ) {
+				if ( ! hash_equals( $previous, $fingerprint ) ) { throw new RuntimeException( __( 'This request was already used. Reopen your bag to see the latest quantities.', 'pod-simple-checkout' ), 409 ); }
+				self::response( array( 'replayed' => true ) );
+			}
+			$item = WC()->cart->get_cart_item( $key );
+			if ( ! $item ) { throw new RuntimeException( __( 'This item is no longer in your bag. Reopen your bag to refresh.', 'pod-simple-checkout' ), 409 ); }
+			$before = WC()->cart->get_cart();
+			$removed = WC()->cart->get_removed_cart_contents();
+			try {
+				if ( 'remove' === $action ) {
+					if ( ! WC()->cart->remove_cart_item( $key ) ) { throw new RuntimeException( __( 'This item cannot be removed here. Use the full bag.', 'pod-simple-checkout' ), 400 ); }
+				} else {
+					$raw = $scalar( 'quantity' );
+					$quantity = apply_filters( 'woocommerce_stock_amount_cart_item', wc_stock_amount( $raw ), $key );
+					$product = $item['data'];
+					$args = apply_filters( 'woocommerce_quantity_input_args', array( 'input_value' => $item['quantity'], 'min_value' => $product->get_min_purchase_quantity(), 'max_value' => $product->get_max_purchase_quantity(), 'step' => 1 ), $product );
+					if ( ! is_numeric( $raw ) || ! is_finite( (float) $raw ) || (float) $raw !== (float) $quantity || $quantity < max( 1, $args['min_value'] ) || ( $args['max_value'] > 0 && $quantity > $args['max_value'] ) || ( $product->is_sold_individually() && $quantity > 1 ) || ( is_numeric( $args['step'] ) && $args['step'] > 0 && abs( ( ( $quantity - $args['min_value'] ) / $args['step'] ) - round( ( $quantity - $args['min_value'] ) / $args['step'] ) ) > 0.00001 ) ) { throw new RuntimeException( __( 'Choose a quantity within the available purchase limits. Use Remove to delete an item.', 'pod-simple-checkout' ), 400 ); }
+					if ( ! apply_filters( 'woocommerce_update_cart_validation', true, $key, $item, $quantity ) ) { throw new RuntimeException( __( 'This quantity was not accepted. Check your options in the full bag.', 'pod-simple-checkout' ), 400 ); }
+					WC()->cart->set_quantity( $key, $quantity, false );
+					$stock = WC()->cart->check_cart_item_stock();
+					if ( is_wp_error( $stock ) ) { throw new RuntimeException( $stock->get_error_message(), 400 ); }
+				}
+				apply_filters( 'woocommerce_update_cart_action_cart_updated', true );
+				WC()->cart->calculate_totals();
+				if ( ! set_transient( $request_key, $fingerprint, POD_SC_Cart::TTL ) ) { throw new RuntimeException( __( 'Unable to confirm this update. Retry safely.', 'pod-simple-checkout' ), 503 ); }
+				WC()->session->save_data();
+			} catch ( Throwable $error ) {
+				WC()->cart->set_cart_contents( $before );
+				WC()->cart->set_removed_cart_contents( $removed );
+				WC()->cart->calculate_totals();
+				throw $error;
+			}
+			self::response( array( 'replayed' => false ) );
+		} catch ( Throwable $error ) {
+			$status = in_array( (int) $error->getCode(), array( 400, 403, 409, 503 ), true ) ? (int) $error->getCode() : 400;
+			wp_send_json( array( 'success' => false, 'message' => $error instanceof RuntimeException ? wp_strip_all_tags( $error->getMessage() ) : __( 'Unable to update your bag. Please retry or use the full bag.', 'pod-simple-checkout' ), 'notices' => wp_kses_post( wc_print_notices( true ) ) ), $status );
+		}
 	}
 }

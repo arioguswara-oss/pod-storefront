@@ -22,6 +22,13 @@
   };
   const close = () => { if (!pending && !body.querySelector('form[aria-busy="true"]')) dialog.close(); };
   closeButton.addEventListener('click', close);
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const controls = [...dialog.querySelectorAll('a[href],button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),summary,[tabindex="0"]')].filter(node => node.tabIndex >= 0 && node.getClientRects().length && getComputedStyle(node).visibility !== 'hidden');
+    const first = controls[0], last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;
@@ -99,4 +106,91 @@
       body.innerHTML = payload.html; body.removeAttribute('aria-busy'); productForm();
     } catch (problem) { if (problem.name !== 'AbortError') error(link.href); }
   });
+  function fragments(payload) {
+    Object.entries(payload.fragments || {}).forEach(([selector, html]) => document.querySelectorAll(selector).forEach(node => { node.outerHTML = html; }));
+    window.jQuery(document.body).trigger('wc_fragments_refreshed');
+  }
+  async function loadBag(focusKey = null) {
+    const response = await fetch(config.bagUrl, { credentials:'same-origin', cache:'no-store', signal:controller.signal });
+    const payload = await response.json();
+    if (!response.ok || !payload.success) throw new Error('Bag unavailable');
+    body.innerHTML = payload.html; body.removeAttribute('aria-busy'); fragments(payload);
+    if (focusKey) body.querySelector(`[data-key="${CSS.escape(focusKey)}"] input.qty`)?.focus();
+  }
+  async function openBag(trigger) {
+    open('bag', trigger);
+    try { await loadBag(); }
+    catch (problem) { if (problem.name !== 'AbortError') error(config.cartUrl); }
+  }
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const url = new URL(link.href, location.href), cart = new URL(config.cartUrl, location.href);
+    if (!link.matches('.pod-cart-link, [data-pod-sc-bag]') && !(link.closest('header') && url.origin === cart.origin && url.pathname === cart.pathname && !url.search)) return;
+    event.preventDefault();
+    if (!pending && !body.querySelector('form[aria-busy="true"]')) openBag(link);
+  });
+  document.addEventListener('pod-sc-added', event => {
+    if (!event.detail.payload.redirect && dialog.open && mode === 'product') openBag(opener);
+  });
+  function bagMessage(message, notices = '') {
+    let area = body.querySelector('.pod-sc-bag-message');
+    if (!area) { area = document.createElement('div'); area.className = 'pod-sc-bag-message'; area.setAttribute('role','alert'); area.tabIndex = -1; body.prepend(area); }
+    area.textContent = message;
+    if (notices) { const native = document.createElement('div'); native.innerHTML = notices; area.append(native); }
+    area.focus(); return area;
+  }
+  async function changeBag(command, key) {
+    if (pending) return;
+    pending = true; body.setAttribute('aria-busy','true');
+    body.querySelectorAll('button,input').forEach(element => { element.disabled = true; });
+    closeButton.disabled = true;
+    try {
+      const response = await fetch(config.changeUrl, {method:'POST', credentials:'same-origin', cache:'no-store', body:command});
+      const payload = await response.json();
+      if (!response.ok || !payload.success) {
+        await loadBag(key); bagMessage(payload.message || 'Bag update could not be completed. Please retry.', payload.notices); return;
+      }
+      body.innerHTML = payload.html; fragments(payload);
+      const next = body.querySelector(`[data-key="${CSS.escape(key)}"] input.qty`);
+      if (next) next.focus(); else closeButton.focus();
+    } catch (_) {
+      const area = bagMessage('Connection interrupted. Retry this same update safely, or reopen your bag to check its latest state.');
+      const retry = document.createElement('button'); retry.type='button'; retry.textContent='Retry update';
+      retry.addEventListener('click', () => changeBag(command,key)); area.append(retry);
+    } finally {
+      pending = false; closeButton.disabled = false; body.removeAttribute('aria-busy');
+      body.querySelectorAll('button,input').forEach(element => { element.disabled = false; });
+    }
+  }
+  async function commandFor(item, action, quantity) {
+    if (pending) return;
+    // Serialize the context read too, so double taps cannot create two commands.
+    pending = true; closeButton.disabled = true;
+    try {
+      const response = await fetch(window.podSC.contextUrl, {credentials:'same-origin',cache:'no-store'});
+      const context = await response.json();
+      if (!response.ok) throw new Error('Context unavailable');
+      const command = new FormData();
+      command.set('pod_sc_nonce',context.nonce); command.set('pod_sc_session_token',context.session_token); command.set('pod_sc_request_id',context.request_id);
+      command.set('key',item.dataset.key); command.set('action',action);
+      if (action === 'quantity') command.set('quantity',quantity);
+      pending = false; await changeBag(command,item.dataset.key);
+    } catch (_) { bagMessage('Unable to start this update. Please retry. Your bag has not been changed.'); }
+    finally { pending = false; closeButton.disabled = false; }
+  }
+  body.addEventListener('click', event => {
+    if (mode !== 'bag') return;
+    const item = event.target.closest('.pod-sc-bag-item'); if (!item || pending) return;
+    if (event.target.closest('.pod-sc-remove')) { commandFor(item,'remove'); return; }
+    const step = event.target.closest('[data-delta]'); if (!step) return;
+    const input = item.querySelector('input.qty');
+    try { Number(step.dataset.delta) < 0 ? input.stepDown() : input.stepUp(); } catch (_) { input.focus(); return; }
+    if (input.reportValidity()) commandFor(item,'quantity',input.value);
+  });
+  body.addEventListener('change', event => {
+    if (mode !== 'bag' || pending || !event.target.matches('input.qty')) return;
+    if (event.target.reportValidity()) commandFor(event.target.closest('.pod-sc-bag-item'),'quantity',event.target.value);
+  });
+  window.addEventListener('pageshow', event => { if (event.persisted && dialog.open && mode === 'bag' && !pending) openBag(opener); });
 })();

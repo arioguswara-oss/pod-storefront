@@ -14,7 +14,7 @@ const sizes = [[320,740],[390,844],[768,1024],[1440,900]];
       await page.locator('#pod-sc-sheet form.cart').waitFor();
       assert.equal(await page.evaluate(()=>innerWidth),width); assert.equal(await page.evaluate(()=>innerHeight),height);
       assert.equal(await page.evaluate(()=>document.documentElement.style.overflow),'hidden');
-      await page.keyboard.press('Escape'); assert.equal(await page.locator('#pod-sc-sheet').evaluate(d=>d.open),false);
+      await page.keyboard.press('Escape'); await page.waitForFunction(()=>!document.querySelector('#pod-sc-sheet').open && document.documentElement.style.overflow !== 'hidden'); assert.equal(await page.locator('#pod-sc-sheet').evaluate(d=>d.open),false);
       assert.equal(await page.locator('.pod-sc-choose').first().evaluate(a=>a===document.activeElement),true);
       await page.goto(base+'/shop/?orderby=date'); const original=page.url();
       const choose=page.locator(`[data-pod-sc-product="${products['POD-FLOW-VAR'].id}"]`); await choose.click();
@@ -32,9 +32,9 @@ const sizes = [[320,740],[390,844],[768,1024],[1440,900]];
       await page.screenshot({path:`tests/results/ux-product-${width}.png`});
       const [response]=await Promise.all([page.waitForResponse(r=>r.url().includes('wc-ajax=pod_sc_add')),dialog.locator('.single_add_to_cart_button').click()]);
       const payload=await response.json();assert.equal(payload.success,true);assert.equal(payload.count,2);
-      await page.waitForFunction(()=>document.querySelector('#pod-sc-sheet form.cart').getAttribute('aria-busy')==='false');
+      await page.locator('#pod-sc-sheet .pod-sc-bag-item').waitFor();
       assert.equal((await page.locator('.pod-cart-count').innerText()).trim(),'2');
-      await page.keyboard.press('Escape'); await page.reload(); assert.equal((await page.locator('.pod-cart-count').innerText()).trim(),'2');
+      await page.keyboard.press('Escape'); await page.waitForFunction(()=>!document.querySelector('#pod-sc-sheet').open && document.documentElement.style.overflow !== 'hidden'); await page.reload(); assert.equal((await page.locator('.pod-cart-count').innerText()).trim(),'2');
       assert.deepEqual(errors,[]);results.push({viewport:`${width}x${height}`,status:'passed'});console.log('PASS product sheet',width,height);
     } finally {await context.close();}
   }} finally {await browser.close();fs.writeFileSync('tests/results/ux-product.json',JSON.stringify(results,null,2));}
