@@ -1,5 +1,10 @@
 # GitHub CI and ZIP delivery — owner actions
 
+Source, review and package delivery use **GitHub only**. Use Releases or Actions
+Artifacts; do not transfer project packages to Google Drive or another service.
+The theme and plugin ZIPs are built, but neither is currently available as a
+GitHub download because the blockers below remain unresolved.
+
 ## Actions billing blocker
 
 Run: https://github.com/arioguswara-oss/pod-storefront/actions/runs/43923170659
@@ -49,5 +54,25 @@ The `dist/` directory contains `pod-store-theme-0.1.0.zip`,
 The plugin is a scaffold awaiting theme review. These commands do not access
 GraphicTeeStore.com or require WordPress/database setup.
 
-If owner-approved delivery through Google Drive is used, it is a separate
-transfer of these review artifacts. No sharing permissions should be widened.
+## Attach the ZIPs to a GitHub draft release
+
+After rebuilding and restoring GitHub upload authentication, run from the
+repository on your own authenticated computer:
+
+```sh
+gh auth login --hostname github.com
+gh release create theme-v0.1.0 \
+  --repo arioguswara-oss/pod-storefront \
+  --draft \
+  --target codex/pod-store-theme-v0.1.0 \
+  --title 'POD Store Theme v0.1.0 — review candidate' \
+  --notes-file docs/theme-v0.1.0-release.md \
+  dist/pod-store-theme-0.1.0.zip \
+  dist/pod-simple-checkout-0.1.0-dev.zip \
+  dist/SHA256SUMS dist/manifest.json
+```
+
+Alternatively, use the repository's Releases → Draft a new release interface
+and attach these same files manually. Keep the release as a draft for owner
+review. Do not publish it or activate the theme automatically. The source
+repository archive is not either component's WordPress-installable ZIP.

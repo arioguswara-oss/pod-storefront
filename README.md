@@ -81,3 +81,5 @@ activation or deployment.
 Current GitHub CI is blocked by an account billing lock; release asset upload
 also returned HTTP 401. See [owner actions and local rebuild](docs/github-unblock.md).
 Passing local checks must not be confused with unrun GitHub CI jobs.
+Source, review and release delivery use **GitHub only** (Releases or Actions
+Artifacts). No project packages are uploaded to Google Drive or other services.

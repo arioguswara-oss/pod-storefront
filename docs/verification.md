@@ -51,9 +51,9 @@ must resolve GitHub billing and rerun the checks; see `github-unblock.md`.
 Uploading release assets through the current GitHub CLI connection also returned
 HTTP 401 from uploads.github.com, although branch and PR writes work. The empty
 draft release was removed; ZIPs were not published or deployed. Review packages
-remain built locally with recorded checksums. Google Drive delivery requires
-explicit owner approval after automatic review rejected that unrequested
-destination. No ZIP was transferred to Drive.
+remain built locally with recorded checksums. The owner selected **GitHub-only
+delivery** through Releases or Actions Artifacts. No ZIP was transferred to
+Google Drive, and no approval for another destination is pending.
 
 ## Public live observations
 
