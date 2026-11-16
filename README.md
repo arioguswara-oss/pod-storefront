@@ -77,3 +77,7 @@ docs/                        Review and activation instructions
 
 Submit changes through branches and pull requests. No automatic merge,
 activation or deployment.
+
+Current GitHub CI is blocked by an account billing lock; release asset upload
+also returned HTTP 401. See [owner actions and local rebuild](docs/github-unblock.md).
+Passing local checks must not be confused with unrun GitHub CI jobs.

@@ -41,6 +41,20 @@ PHP 7.4/8.4 lint jobs are configured in GitHub Actions; their status must be rea
 from the PR checks. Full runtime compatibility with those PHP versions and every
 active GraphicTeeStore plugin is not established by the PHP 8.3 fixture.
 
+The [first CI run](https://github.com/arioguswara-oss/pod-storefront/actions/runs/43923170659)
+did **not start any runner steps**. GitHub's annotation states: "The job was not
+started because your account is locked due to a billing issue." The failure is
+an account-level blocker, not a successful CI run or a code-test result. No CI
+artifacts were produced. Local results above are separate and passed. The owner
+must resolve GitHub billing and rerun the checks; see `github-unblock.md`.
+
+Uploading release assets through the current GitHub CLI connection also returned
+HTTP 401 from uploads.github.com, although branch and PR writes work. The empty
+draft release was removed; ZIPs were not published or deployed. Review packages
+remain built locally with recorded checksums. Google Drive delivery requires
+explicit owner approval after automatic review rejected that unrequested
+destination. No ZIP was transferred to Drive.
+
 ## Public live observations
 
 Initial GET-only inspection of homepage, a T-shirts category and one variable
