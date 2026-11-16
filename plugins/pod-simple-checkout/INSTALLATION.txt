@@ -1,0 +1,63 @@
+POD Simple Checkout 1.0.0 — installation, acceptance and rollback
+
+BEFORE LIVE ACTIVATION
+
+The owner must explicitly approve live upload/activation. This development task
+does not grant that approval. GraphicTeeStore.com remains the real-world testing
+website; do not create or require an extra hosted staging site.
+
+1. Obtain a complete database backup including WooCommerce/HPOS order tables,
+   and file backups of plugins, theme, uploads and configuration. Store securely
+   outside the repository/webroot. Verify archive readability and restore access.
+2. Record WordPress/PHP/WooCommerce versions, the current active plugin version,
+   checkout page ID/type, guest checkout rules, required fields/extensions,
+   shipping methods/taxes/coupons, current gateways and cache exclusions.
+3. Verify the ZIP's SHA-256 against the accompanying SHA256SUMS. The root folder
+   must be pod-simple-checkout/. There are no development dependencies inside.
+4. Confirm the mode displayed under WooCommerce > POD Simple Checkout. The live
+   page was read-only verified as page 9, shortcode [woocommerce_checkout]. The
+   plugin detects the current page again at runtime; it does not edit the page.
+
+INSTALL AND CONFIGURE (AFTER APPROVAL)
+
+Upload pod-simple-checkout-v1.0.0.zip in WordPress Admin > Plugins > Add New >
+Upload Plugin. If replacing the old scaffold, use WordPress's normal replacement
+confirmation after backup. Activate the plugin. No CLI, npm or Composer is needed.
+
+Open WooCommerce > POD Simple Checkout. Keep cart replacement OFF initially.
+Buy Now, AJAX, direct checkout and checkout UI default to ON. No store options
+are changed on activation; these are plugin defaults. Saving the settings writes
+only pod_sc_settings via the WordPress Settings API and a manage_woocommerce
+capability check. Gateways and cache plugins are not reconfigured.
+
+OWNER-APPROVED ACCEPTANCE CHECKS
+
+Start with read-only browsing at 320/390/768/1440px: layout, variation options,
+price display, stock and native field labels. Compare before/after public URLs.
+
+Cart operations write a visitor session and can fire tracking/extension hooks;
+obtain explicit authorization before any live cart smoke test. In a clean guest
+session check Add to Cart, counts, variable selection, Buy Now, preserved bag,
+shipping/address changes, coupon validation, privacy/terms and visible errors.
+Keep native cart accessible. Remove agreed test items afterward.
+
+Do not submit real orders or test real payments under this development scope.
+Live paid-order/gateway verification belongs to a separately authorized process.
+Zero-value orders in the automated suite are synthetic and local only.
+
+LiteSpeed configuration stays untouched. Review existing cache exclusions;
+verify dynamic responses are not cached after the owner authorizes installation.
+Redis is not enabled. CDN/edge/third-party cache behavior remains an operator
+check; per-response headers cannot repair a separately misconfigured upstream.
+
+ROLLBACK
+
+Deactivate only POD Simple Checkout via WordPress Admin. Native WooCommerce
+product forms, cart and checkout continue, using the same products/URLs/orders.
+If wp-admin is unavailable, use authorized hosting file-manager access to rename
+this plugin folder, or existing WP-CLI access: wp plugin deactivate pod-simple-checkout
+
+Retain the ZIP and prior plugin package. Reinstall the previous version only if
+needed. No theme switch or gateway configuration change is part of rollback.
+Do not restore the database as the first step: doing so can erase newer orders.
+Plugin settings are retained; short-lived request records expire normally.

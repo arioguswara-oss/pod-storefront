@@ -34,11 +34,18 @@ Flatsome/UX Builder content on other pages and theme-provided widgets/menus.
 
 ## Shopping-flow plugin
 
-`plugins/pod-simple-checkout` stays at `0.1.0-dev`: metadata and direct-access
-guard only, with a declared WooCommerce dependency. Its independent ZIP can be
-installed and activated, but has no shopping-flow functionality. After theme
-review, requirements for classic checkout versus Checkout Block support should
-be agreed before implementation. Payment gateways remain outside scope.
+`plugins/pod-simple-checkout` is now version `1.0.0`, developed on a dedicated
+branch from the existing theme branch after the owner confirmed the theme is
+active. Native WooCommerce APIs handle validated simple/variable additions,
+cart sessions and all checkout/order behavior. Buy Now adds a scoped redirect;
+standard cart behavior remains. Small PHP classes separate cart commands,
+capability-protected settings and Classic/Blocks presentation modes.
+
+AJAX commands use fresh nonce/session context, native fragments and bounded
+request replay protection. Classic UI wraps existing template hooks and adds
+thumbnails; Checkout Blocks remain native with scoped CSS. No checkout page,
+WooCommerce fields or gateway implementation is replaced. See
+`plugin-v1.0.0.md` and the plugin's packaged COMPATIBILITY.txt/SECURITY.txt.
 
 ## Releases
 
@@ -47,6 +54,10 @@ mismatching WordPress version headers, missing files, symlinks and output inside
 component source. ZIP ordering, timestamps and permissions are stable;
 `manifest.json` and `SHA256SUMS` identify the built files.
 
-Keep ZIPs, customer exports, credentials and runtime data out of Git. After review
+Keep `dist/`, customer exports, credentials and runtime data out of Git. Frozen,
+versioned review ZIPs and synthetic preview screenshots may be copied to
+`releases/` for the owner's GitHub-only download requirement when Actions or
+Release asset upload is unavailable. Package hashes must match the build.
+After review
 and merge, release tags can use `theme/v0.1.0` and later `plugin/v0.1.0`.
 A version/tag/ZIP does not authorize deployment; there is no deploy workflow.

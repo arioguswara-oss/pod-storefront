@@ -1,4 +1,5 @@
-# Aset plugin
+# Plugin assets
 
-Tempat CSS dan JavaScript pada tahap berikutnya. Tidak ada aset yang dimuat
-atau perubahan antarmuka checkout pada scaffold ini.
+product.js progressively enhances native product forms; product.css styles
+plugin buttons/states. checkout.css is scoped to enhanced checkout body classes.
+No bundler, external library, hosted asset or gateway script is supplied.

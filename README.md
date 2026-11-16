@@ -3,19 +3,21 @@
 A lightweight WordPress / WooCommerce project for **GraphicTeeStore.com**.
 
 - **POD Store Theme 0.1.0**: review candidate, white and mobile-first; homepage, category/catalog and single-product pages.
-- **POD Simple Checkout 0.1.0-dev**: independently installable scaffold only. Shopping-flow development starts after the theme review. No payment gateway changes.
+- **POD Simple Checkout 1.0.0**: independently installable plugin with Buy Now, progressive AJAX product forms, native checkout presentation and safe settings. No payment gateway changes.
 
 ## Packages
+
+[Download POD Simple Checkout v1.0.0 and review its checksums/screenshots](releases/plugin-v1.0.0/README.md).
 
 ```sh
 python3 scripts/build.py
 # Or: python3 scripts/build.py --component theme
 ```
 
-Outputs: `dist/pod-store-theme-0.1.0.zip`, `dist/pod-simple-checkout-0.1.0-dev.zip`,
+Outputs: `dist/pod-store-theme-0.1.0.zip`, `dist/pod-simple-checkout-v1.0.0.zip`,
 `manifest.json` and `SHA256SUMS`. Each ZIP contains one component folder at its
 root and can be uploaded separately through the WordPress dashboard. Plugin
-scaffold is not the final shopping-flow release.
+installation is independent of the existing theme. See [plugin installation and compatibility](docs/plugin-v1.0.0.md).
 
 Release metadata lives in `releases.json`; versions must match WordPress headers.
 Builds require Python 3.9+ and use only the standard library. Theme runtime has no
@@ -42,6 +44,7 @@ pages need a compatibility review before changing themes.
 python3 -m unittest discover -s tests -p 'test_*.py' -v
 find themes plugins tests -name '*.php' -print0 | xargs -0 -n1 php -l
 node --check themes/pod-store-theme/assets/js/navigation.js
+node --check plugins/pod-simple-checkout/assets/product.js
 git diff --check
 ```
 
@@ -78,8 +81,14 @@ docs/                        Review and activation instructions
 Submit changes through branches and pull requests. No automatic merge,
 activation or deployment.
 
+The user reports POD Store Theme 0.1.0 already active on GraphicTeeStore.com.
+Plugin development preserves all theme files. The configured live checkout was
+read-only verified as Classic (`[woocommerce_checkout]`, page 9).
+
 Current GitHub CI is blocked by an account billing lock; release asset upload
 also returned HTTP 401. See [owner actions and local rebuild](docs/github-unblock.md).
 Passing local checks must not be confused with unrun GitHub CI jobs.
 Source, review and release delivery use **GitHub only** (Releases or Actions
-Artifacts). No project packages are uploaded to Google Drive or other services.
+Artifacts, with versioned repository review packages when those are blocked).
+No project packages are uploaded to Google Drive or other services.
+The plugin ZIP download above works independently of Actions/Release uploads.

@@ -32,7 +32,9 @@ fs.rmSync(path.join(results, 'browser-report.json'), { force: true });
         }));
         assert.deepEqual(undersizedCards, [], `${name} product cards fill their grid columns at ${width}px`);
         if (name === 'home') {
-          assert.equal(await page.locator('.pod-arrivals .product').count(), 8);
+          const visibleProducts = await page.locator('.pod-arrivals .product').count();
+          assert.ok(visibleProducts > 0 && visibleProducts <= 8, 'Up to eight visible products; out-of-stock candidates may be excluded');
+          assert.equal(await page.getByText('Flow Unavailable Tee', { exact: true }).count(), 0);
           assert.equal(await page.getByText('Hidden Test Product', { exact: true }).count(), 0);
           assert.equal(await page.getByText('Out of Stock Test Product', { exact: true }).count(), 0);
           assert.ok(await page.locator('.pod-category-nav a').count() >= 3);
@@ -99,12 +101,14 @@ fs.rmSync(path.join(results, 'browser-report.json'), { force: true });
       checks.push(`Product search ${width}px: PASS`);
       // Native catalog AJAX and the default WooCommerce Cart Block, no orders.
       await page.goto(base);
-      await page.locator('.pod-arrivals .ajax_add_to_cart').first().click();
+      const catalogButton = page.locator('.pod-arrivals .ajax_add_to_cart').first();
+      const catalogProductName = await catalogButton.locator('xpath=ancestor::li[contains(@class,"product")]').locator('.woocommerce-loop-product__title').innerText();
+      await catalogButton.click();
       await page.waitForFunction(() => document.querySelector('.pod-cart-count').textContent.trim() === '1');
       await page.goto(base + '/cart/');
       await page.locator('.wc-block-cart-item__remove-link').first().waitFor();
       await page.locator('.wc-block-cart-items__row').waitFor();
-      assert.ok((await page.locator('.wc-block-cart-items__row').innerText()).includes('Quiet Hours Tee'));
+      assert.ok((await page.locator('.wc-block-cart-items__row').innerText()).includes(catalogProductName));
       const [quantityResponse] = await Promise.all([
         page.waitForResponse(response => response.url().includes('/cart/update-item') && response.request().method() === 'POST'),
         page.locator('.wc-block-cart-items__row .wc-block-components-quantity-selector__button--plus').click()

@@ -24,7 +24,9 @@ jobs:
       - name: Lint PHP
         run: find themes plugins tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Check JavaScript
-        run: node --check themes/pod-store-theme/assets/js/navigation.js
+        run: |
+          node --check themes/pod-store-theme/assets/js/navigation.js
+          node --check plugins/pod-simple-checkout/assets/product.js
       - name: Package tests and build
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -35,7 +37,7 @@ jobs:
         with:
           name: wordpress-installable-packages
           path: |
-            dist/*-0.1.0*.zip
+            dist/*.zip
             dist/manifest.json
             dist/SHA256SUMS
   browser:
@@ -52,7 +54,18 @@ jobs:
       - name: Install built ZIPs into disposable loopback fixture
         run: POD_ALLOW_TEST_FIXTURE=1 sh tests/setup.sh
       - name: Responsive catalog, variations and cart checks
-        run: node tests/e2e.cjs
+        run: |
+          docker compose -f tests/compose.yml exec -T wordpress php /fixtures/.downloads/wp-cli.phar --allow-root plugin deactivate pod-simple-checkout
+          node tests/e2e.cjs
+          docker compose -f tests/compose.yml exec -T wordpress php /fixtures/.downloads/wp-cli.phar --allow-root plugin activate pod-simple-checkout
+      - name: Plugin HTTP security, validation and idempotency
+        run: |
+          node tests/plugin-api.cjs
+          node tests/plugin-concurrency.cjs
+      - name: Plugin browser, native checkout and compatibility checks
+        run: node tests/plugin-browser.cjs
+      - name: Plugin lifecycle and existing-record preservation
+        run: node tests/plugin-lifecycle.cjs
       - name: Rollback and standalone theme checks
         run: sh tests/rollback.sh
       - name: Capture fixture diagnostics

@@ -1,5 +1,17 @@
 # Changelog
 
+## POD Simple Checkout 1.0.0 — review candidate
+
+- Native simple/variable Buy Now, preserving the bag by default, with direct
+  checkout scoped to that intent. Optional post-validation cart replacement.
+- Progressive AJAX product forms, native fragments/counts, fresh session/nonce
+  context, duplicate-request protection and safe POST fallbacks.
+- Native Classic Checkout wrappers/thumbnail summary and Checkout Blocks styling
+  mode, preserving required fields, terms, totals, payment and order behavior.
+- Capability-protected settings, cache response controls, dependency notice,
+  independently installable ZIP and documented compatibility/rollback.
+- No changes to the existing theme, live store, gateway integrations or orders.
+
 ## POD Store Theme 0.1.0 — review candidate
 
 - White mobile-first storefront with a product-led homepage, editable hero copy,

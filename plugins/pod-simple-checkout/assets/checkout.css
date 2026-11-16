@@ -1,0 +1,47 @@
+.pod-sc-checkout { background: #fff; color: #171717; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.pod-sc-checkout *, .pod-sc-checkout *::before, .pod-sc-checkout *::after { box-sizing: border-box; }
+.pod-sc-checkout .pod-desktop-nav, .pod-sc-checkout .pod-header-actions { display: none; }
+.pod-sc-checkout .pod-main { max-width: 1240px; }
+.pod-sc-checkout .pod-sc-back { font-size: 13px; margin-bottom: 28px; }
+.pod-sc-classic form.checkout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+.pod-sc-classic form.checkout > :not(.pod-sc-details):not(.pod-sc-summary) { grid-column: 1 / -1; }
+.pod-sc-classic .pod-sc-details, .pod-sc-classic .pod-sc-summary { min-width: 0; }
+.pod-sc-classic .pod-sc-details h2, .pod-sc-classic #order_review_heading { font: 500 23px/1.3 system-ui, sans-serif; margin: 0 0 24px; color: #171717; }
+.pod-sc-classic #customer_details { width: 100%; }
+.pod-sc-classic #customer_details .col-1, .pod-sc-classic #customer_details .col-2 { float: none; width: 100%; }
+.pod-sc-classic #customer_details h3 { font-size: 18px; margin: 24px 0 18px; }
+.pod-sc-classic #customer_details h3#ship-to-different-address { font-size: 15px; }
+.pod-sc-classic #customer_details label { font-size: 13px; color: #171717; }
+.pod-sc-classic #customer_details input.input-text, .pod-sc-classic #customer_details select, .pod-sc-classic #customer_details textarea { width: 100%; min-height: 46px; padding: 12px; border: 1px solid #a8a8a8; border-radius: 0; font: inherit; background: #fff; color: #171717; }
+.pod-sc-classic .select2-container .select2-selection--single { min-height: 46px; padding: 8px 0; border: 1px solid #a8a8a8; border-radius: 0; }
+.pod-sc-classic .select2-container .select2-selection__arrow { top: 10px; }
+.pod-sc-classic .form-row { margin-bottom: 14px; }
+.pod-sc-classic .form-row-first, .pod-sc-classic .form-row-last { width: 100%; float: none; }
+.pod-sc-classic .pod-sc-summary { padding: 22px 16px; border: 1px solid #e5e5e5; background: #fff; }
+.pod-sc-classic table.shop_table { width: 100%; border: 0; border-collapse: collapse; table-layout: fixed; margin-bottom: 24px; font-size: 13px; }
+.pod-sc-classic table.shop_table th, .pod-sc-classic table.shop_table td { border: 0; border-bottom: 1px solid #e5e5e5; padding: 16px 4px; vertical-align: top; overflow-wrap: anywhere; }
+.pod-sc-classic table.shop_table th.product-total, .pod-sc-classic table.shop_table td.product-total { width: 42%; text-align: right; }
+.pod-sc-classic table.shop_table tfoot th { width: 60%; text-align: left; font-weight: 500; }
+.pod-sc-classic table.shop_table tfoot td { text-align: right; }
+.pod-sc-classic table.shop_table .order-total { font-size: 17px; }
+.pod-sc-classic .pod-sc-item-image { float: left; width: 46px; margin: 0 10px 8px 0; }
+.pod-sc-classic .pod-sc-item-image img { width: 46px; height: 58px; object-fit: contain; background: #f5f5f5; }
+.pod-sc-classic .pod-sc-item-name { font-weight: 500; }
+.pod-sc-classic .cart_item dl.variation { font-size: 12px; margin-top: 8px; }
+.pod-sc-classic .cart_item dl.variation dt, .pod-sc-classic .cart_item dl.variation dd { padding-bottom: 4px; margin-bottom: 0; }
+.pod-sc-classic #shipping_method { padding: 0; margin: 0; list-style: none; text-align: left; font-size: 12px; }
+.pod-sc-classic #shipping_method label { display: inline; font-weight: 400; }
+.pod-sc-classic #payment { border: 0; border-radius: 0; background: #fff; }
+.pod-sc-classic #payment ul.payment_methods { padding: 16px 0; border-bottom: 1px solid #e5e5e5; }
+.pod-sc-classic #payment div.form-row { padding: 16px 0 0; }
+.pod-sc-classic #payment div.payment_box { border-radius: 0; }
+.pod-sc-checkout #place_order, .pod-sc-blocks .wc-block-components-checkout-place-order-button { width: 100%; min-height: 50px; border: 1px solid #171717; border-radius: 0; background: #171717; color: #fff; font-weight: 600; }
+.pod-sc-checkout #place_order:hover { background: #333; }
+.pod-sc-checkout .woocommerce-privacy-policy-text, .pod-sc-checkout .woocommerce-terms-and-conditions-wrapper { font-size: 12px; line-height: 1.6; }
+.pod-sc-checkout :focus-visible { outline: 2px solid #171717; outline-offset: 3px; }
+.pod-sc-checkout .woocommerce-error { color: #971d1d; border-color: #971d1d; background: #fff; }
+.pod-sc-blocks .wc-block-components-text-input input, .pod-sc-blocks .wc-block-components-combobox .components-combobox-control__input { border-radius: 0; }
+.pod-sc-blocks .wc-block-components-order-summary { border-color: #e5e5e5; }
+@media (min-width: 640px) { .pod-sc-classic .form-row-first, .pod-sc-classic .form-row-last { width: 48%; } .pod-sc-classic .form-row-first { float: left; } .pod-sc-classic .form-row-last { float: right; } .pod-sc-classic .pod-sc-summary { padding: 28px; } }
+@media (min-width: 960px) { .pod-sc-classic form.checkout { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 44px; } }
+@media (prefers-reduced-motion: reduce) { .pod-sc-checkout *, .pod-sc-messages { animation: none !important; transition: none !important; } }

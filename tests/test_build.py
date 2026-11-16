@@ -31,7 +31,7 @@ class PackageTests(unittest.TestCase):
         self.assertEqual(len(first), 2)
         for entry in first:
             with ZipFile(self.output / entry["file"]) as archive:
-                slug = entry["file"].removesuffix(f'-{entry["version"]}.zip')
+                slug = json.loads((self.root / 'releases.json').read_text())[entry['component']]['slug']
                 self.assertTrue(all(name.startswith(slug + "/") for name in archive.namelist()))
                 self.assertFalse(any(name.endswith(".md") or "/." in name for name in archive.namelist()))
                 self.assertIsNone(archive.testzip())
@@ -41,6 +41,14 @@ class PackageTests(unittest.TestCase):
         path = self.root / "themes/pod-store-theme/style.css"
         path.write_text(path.read_text().replace("Version: 0.1.0", "Version: 9.9.9"))
         with self.assertRaisesRegex(ValueError, "version mismatch"):
+            build_module.build(self.output, root=self.root)
+
+    def test_archive_path_cannot_escape_output(self):
+        path = self.root / 'releases.json'
+        releases = json.loads(path.read_text())
+        releases['plugin']['archive_name'] = '../pod-simple-checkout-v1.0.0.zip'
+        path.write_text(json.dumps(releases))
+        with self.assertRaisesRegex(ValueError, 'Invalid archive name'):
             build_module.build(self.output, root=self.root)
 
     def test_missing_template_rejected(self):
