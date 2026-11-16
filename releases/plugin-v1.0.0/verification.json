@@ -152,7 +152,13 @@
   },
   "live_modified": false,
   "paid_transactions_tested": false,
-  "github_actions": "Not claimed as passed; see PR status and verification report.",
+  "github_actions": {
+    "run_id": 43950610485,
+    "conclusion": "failure",
+    "observed_package_job_steps": 0,
+    "tests_claimed_passed": false,
+    "current_failure_annotation": "Not retrievable through available connection; specific cause not asserted."
+  },
   "zip_sha256": "b1ddb3bc1b76e829a77eaeedef7bee73955d931dd81b7244aa27d4394da686e5",
   "source_files_sha256": {
     "pod-simple-checkout/CHANGELOG.txt": "662cac97aad3b1e6b084a9c229757445963bb7a7ec297ed2c6fc7f0526ad4ddf",

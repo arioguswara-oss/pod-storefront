@@ -58,6 +58,12 @@ competing POD requests. No WooCommerce database table is directly edited.
 - GitHub Actions success is **not claimed** by these local results. Check the
   plugin PR's status. The previous account-level run was blocked before runner
   steps by a billing lock; repository review downloads do not depend on Actions.
+  The [fresh plugin run](https://github.com/arioguswara-oss/pod-storefront/actions/runs/43950610485)
+  also finished as failure before test steps: its package job returned an empty
+  step list. No CI test or artifact is reported as passed. The current failure
+  annotation was not retrievable through this connection, so its specific cause
+  is not inferred from the older billing error. The follow-up documentation-only
+  commit skips CI to avoid another unproductive run.
 - No paid transaction, real order, live gateway, card-data handling, webhook or
   production LiteSpeed/CDN/Redis test occurred. No provider was enabled in the
   fixture; the native payment area remained present for paid baskets. Fixture

@@ -42,5 +42,7 @@ native payment area can show an expected unavailable-method notice. Existing
 live gateway settings were never changed. No real payment or live order was tested.
 
 All available local tests passed. GitHub CI success is not claimed; check the
-PR status separately. Do not merge, deploy or activate automatically. Rollback
+PR status separately. The [plugin Actions run](https://github.com/arioguswara-oss/pod-storefront/actions/runs/43950610485)
+failed before test steps; no CI artifacts were produced. The ZIP linked above
+is an independently verified repository download. Do not merge, deploy or activate automatically. Rollback
 by deactivating this plugin; native WooCommerce remains available.
