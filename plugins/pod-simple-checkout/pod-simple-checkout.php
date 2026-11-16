@@ -29,5 +29,6 @@ add_action( 'before_woocommerce_init', static function () {
 require_once POD_SC_PATH . 'includes/class-settings.php';
 require_once POD_SC_PATH . 'includes/class-cart.php';
 require_once POD_SC_PATH . 'includes/class-checkout.php';
+require_once POD_SC_PATH . 'includes/class-shopping-ux.php';
 require_once POD_SC_PATH . 'includes/class-plugin.php';
 add_action( 'plugins_loaded', array( 'POD_SC_Plugin', 'boot' ), 20 );

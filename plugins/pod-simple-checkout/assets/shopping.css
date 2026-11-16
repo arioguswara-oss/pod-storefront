@@ -1,0 +1,36 @@
+/* GraphicTeeStore shopping surfaces; isolated from native checkout and payment UI. */
+.pod-sc-sheet { box-sizing:border-box; color:#171717; background:#fff; border:0; border-radius:20px 20px 0 0; padding:0; margin:auto 0 0; width:100%; max-width:100%; max-height:92vh; max-height:92dvh; overflow:hidden; font:16px/1.5 system-ui,sans-serif; box-shadow:0 -8px 40px #0002; }
+.pod-sc-sheet::backdrop { background:#0008; }
+.pod-sc-sheet *, .pod-sc-sheet *::before, .pod-sc-sheet *::after { box-sizing:border-box; }
+.pod-sc-sheet-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px; border-bottom:1px solid #e5e5e5; }
+.pod-sc-sheet-header h2 { font-size:18px; margin:0; }
+.pod-sc-sheet button, .pod-sc-sheet a { touch-action:manipulation; }
+.pod-sc-sheet button { font:inherit; cursor:pointer; }
+.pod-sc-sheet .pod-sc-close { display:grid; place-items:center; background:#fff; border:0; color:#171717; min-width:44px; min-height:44px; font-size:28px; padding:0; }
+.pod-sc-sheet-body { padding:18px 18px max(18px,env(safe-area-inset-bottom)); overflow-y:auto; overscroll-behavior:contain; max-height:calc(92vh - 69px); max-height:calc(92dvh - 69px); }
+.pod-sc-product-heading { display:grid; grid-template-columns:88px minmax(0,1fr); gap:16px; margin-bottom:20px; }
+.pod-sc-product-heading img { width:88px; height:108px; object-fit:cover; border-radius:6px; background:#f5f5f5; }
+.pod-sc-product-heading h3 { font-size:17px; margin:0 0 6px; overflow-wrap:anywhere; }
+.pod-sc-product-heading a { font-size:13px; color:#555; text-underline-offset:3px; }
+.pod-sc-sheet-price { font-weight:600; margin-bottom:6px; }
+.pod-sc-sheet .variations { width:100%; border:0; border-collapse:collapse; }
+.pod-sc-sheet .variations tr,.pod-sc-sheet .variations td,.pod-sc-sheet .variations th { display:block; text-align:left; border:0; padding:0; }
+.pod-sc-sheet .variations label { display:block; margin:16px 0 8px; font-weight:600; }
+.pod-sc-native-select { position:absolute!important; width:1px!important; height:1px!important; opacity:0; pointer-events:none; }
+.pod-sc-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.pod-sc-chips button { min-width:44px; min-height:44px; padding:8px 14px; border:1px solid #d8d8d8; border-radius:5px; background:#fff; color:#171717; }
+.pod-sc-chips button[aria-pressed=true] { background:#171717; color:#fff; border-color:#171717; }
+.pod-sc-sheet button:disabled { opacity:.4; cursor:not-allowed; }
+.pod-sc-sheet :focus-visible { outline:3px solid #555; outline-offset:3px; }
+.pod-sc-sheet .reset_variations { display:inline-block; margin:10px 0; font-size:13px; }
+.pod-sc-sheet form.cart { margin:0; }
+.pod-sc-sheet .quantity { display:flex; align-items:center; width:max-content; max-width:100%; border:1px solid #ddd; border-radius:5px; margin:12px 0; }
+.pod-sc-sheet .quantity .qty { width:56px; min-height:44px; padding:8px 0; text-align:center; border:0; box-shadow:none; background:#fff; color:#171717; }
+.pod-sc-sheet .pod-sc-step { width:44px; height:44px; padding:0; border:0; color:#171717; background:#fff; }
+.pod-sc-sheet .single_add_to_cart_button,.pod-sc-sheet .pod-sc-buy-now { display:block; width:100%; min-height:48px; margin:10px 0 0; border:1px solid #171717; border-radius:5px; padding:12px; background:#fff; color:#171717; font-weight:600; }
+.pod-sc-sheet .pod-sc-buy-now { background:#171717; color:#fff; }
+.pod-sc-sheet .pod-sc-messages { clear:both; margin-top:12px; overflow-wrap:anywhere; }
+.pod-sc-sheet .woocommerce-error,.pod-sc-sheet .woocommerce-message,.pod-sc-sheet .woocommerce-info { padding:12px; margin:0; list-style:none; border:1px solid #ddd; background:#fafafa; color:#171717; }
+.pod-sc-sheet .woocommerce-error::before,.pod-sc-sheet .woocommerce-message::before { display:none; }
+@media(min-width:768px) { .pod-sc-sheet { width:540px; max-width:calc(100% - 48px); margin:auto; border-radius:14px; } .pod-sc-sheet-body { padding:24px; } }
+@media(prefers-reduced-motion:reduce) { .pod-sc-sheet * { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }

@@ -17,7 +17,7 @@ final class POD_SC_Cart {
 
 	public static function early_lock() {
 		$endpoint = isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) ? sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- lock selection does not authorize a cart command.
-		$is_ajax = in_array( $endpoint, array( 'pod_sc_add', 'pod_sc_context' ), true );
+		$is_ajax = in_array( $endpoint, array( 'pod_sc_add', 'pod_sc_context', 'pod_sc_bag', 'pod_sc_bag_change', 'pod_sc_product' ), true );
 		$is_buy = 'POST' === strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) && ! empty( $_POST['pod_sc_buy_now'] ); // phpcs:ignore WordPress.Security.NonceVerification -- nonce checked before any mutation.
 		if ( ! $is_ajax && ! $is_buy ) { return; }
 		// Lock before WooCommerce init reads session data, and keep it until native shutdown saves finish.
@@ -42,7 +42,7 @@ final class POD_SC_Cart {
 
 	public static function guard_native_handler() {
 		$endpoint = isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) ? sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- prevents native mutation; does not authorize one.
-		if ( in_array( $endpoint, array( 'pod_sc_add', 'pod_sc_context' ), true ) ) {
+		if ( in_array( $endpoint, array( 'pod_sc_add', 'pod_sc_context', 'pod_sc_bag', 'pod_sc_bag_change', 'pod_sc_product' ), true ) ) {
 			// WC_Form_Handler runs before WC AJAX dispatch. Only our verified command may add this POST.
 			unset( $_REQUEST['add-to-cart'] );
 		}
@@ -179,7 +179,7 @@ final class POD_SC_Cart {
 		$before = $cart->get_cart();
 		$removed = $cart->get_removed_cart_contents();
 		$coupons = $cart->get_applied_coupons();
-		$replace = $buy && POD_SC_Settings::enabled( 'replace_cart' );
+		$replace = $buy && POD_SC_Settings::enabled( 'replace_cart' ) && 'sheet' !== self::scalar( $data, 'pod_sc_surface' );
 		try {
 			// Validate replacement against a candidate cart in memory; restore on any failure.
 			if ( $replace ) { $cart->set_cart_contents( array() ); }
@@ -231,7 +231,7 @@ final class POD_SC_Cart {
 	}
 
 	public static function fallback() {
-		if ( isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) && in_array( sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ), array( 'pod_sc_add', 'pod_sc_context' ), true ) ) { return; } // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- AJAX has its own verified command.
+		if ( isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) && in_array( sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ), array( 'pod_sc_add', 'pod_sc_context', 'pod_sc_bag', 'pod_sc_bag_change', 'pod_sc_product' ), true ) ) { return; } // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- AJAX has its own verified command.
 		if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ?? '' ) || empty( $_POST['pod_sc_buy_now'] ) ) { return; } // phpcs:ignore WordPress.Security.NonceVerification -- process verifies nonce before any mutation.
 		POD_SC_Plugin::no_cache();
 		$product_id = absint( self::scalar( $_POST, 'pod_sc_product_id' ) );
