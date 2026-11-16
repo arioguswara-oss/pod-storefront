@@ -1,0 +1,4 @@
+{
+  "theme": {"slug": "pod-store-theme", "version": "0.1.0", "status": "review-candidate"},
+  "plugin": {"slug": "pod-simple-checkout", "version": "0.1.0-dev", "status": "scaffold-awaiting-theme-review"}
+}

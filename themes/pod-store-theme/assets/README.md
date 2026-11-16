@@ -1,4 +1,6 @@
-# Aset theme
+# Theme assets
 
-Tempat aset CSS, JavaScript, font, atau gambar tahap berikutnya. Stylesheet dasar
-saat ini ada di `../style.css`. Belum ada dependensi build frontend.
+The root style.css supplies the complete theme design. assets/js/navigation.js
+enhances native details navigation and refreshes WooCommerce cart fragments
+after Blocks add/remove events. No external fonts, trackers, bundler or
+third-party frontend runtime is required.

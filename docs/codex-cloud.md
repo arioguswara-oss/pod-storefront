@@ -17,8 +17,8 @@ baru. Tool pengubah konfigurasi environment tidak tersedia saat setup awal ini.
 1. Buka pengaturan environment Codex Cloud dan buat/pilih environment bernama
    **POD Storefront**. Label menu dapat berbeda menurut versi antarmuka.
 2. Pilih repository **arioguswara-oss/pod-storefront** sebagai sumber checkout,
-   dengan branch dasar `main`. Selama scaffold belum di-merge, pilih branch
-   `codex/project-scaffold` untuk melanjutkan kerangka ini.
+   dengan branch dasar `main`. Selama theme belum di-merge, pilih branch
+   `codex/pod-store-theme-v0.1.0` untuk melanjutkan rilis theme ini.
 3. Jika repository tidak muncul, buka **Settings → Plugins → GitHub**, lalu
    perbarui akses GitHub App agar mencakup repository ini. Selesaikan login,
    2FA, atau SSO hanya bila diminta GitHub. Jangan menempel token ke chat atau Git.
@@ -49,5 +49,7 @@ pull request. Hindari force-push dan jangan merge otomatis.
 find themes plugins -type f -name '*.php' -exec php -l {} \;
 ```
 
-Paket perlu diuji melalui dashboard WordPress lokal/staging dengan WooCommerce
-aktif. Jangan menggunakan website live untuk setup atau pengujian awal ini.
+Paket diperiksa melalui fixture otomatis lokal dengan data sintetis. Website
+real-world testing adalah GraphicTeeStore.com; tidak perlu website staging
+tambahan. Upload, preview, aktivasi dan pengujian yang menulis ke website live
+memerlukan otorisasi eksplisit sesuai `docs/live-activation.md`.

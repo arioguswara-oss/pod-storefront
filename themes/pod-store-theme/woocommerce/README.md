@@ -1,4 +1,6 @@
-# Template WooCommerce
+# Native WooCommerce templates
 
-Belum ada override template. Utamakan hook dan template bawaan WooCommerce.
-Jika override diperlukan di tahap berikutnya, dokumentasikan versi sumbernya.
+No template overrides are shipped. Native WooCommerce category, product,
+variation, gallery, cart and checkout templates remain in use.
+inc/woocommerce.php removes duplicate main wrappers/sidebar and adds header
+cart fragments; header.php/footer.php supply the main landmark.
