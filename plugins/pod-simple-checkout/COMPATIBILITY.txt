@@ -1,4 +1,4 @@
-POD Simple Checkout 1.2.1 — compatibility modes and limits
+POD Simple Checkout 1.2.2 — compatibility modes and limits
 
 NATIVE SIMPLE / VARIABLE PRODUCT FORMS
 
@@ -180,7 +180,8 @@ text on a plain-text button becomes Pay Now. Structured button markup stays nati
 all processing/validation stay untouched. No new button or payment API exists.
 
 Default reviewed ID allowlist: paypal, ppcp-gateway, ppcp-credit-card-gateway,
-stripe, stripe_cc, woocommerce_payments. Gateway IDs are not inferred from display
+stripe, stripe_cc, woocommerce_payments, vccp-gateway-paypal and
+vccp-gateway-banxa (Issue #9, v1.2.2). Gateway IDs are not inferred from display
 titles. Declared order_button_text or has_custom_place_order_button excludes the
 gateway; live native method metadata and non-default dynamic labels also win.
 An actual PayPal integration saying Continue/Proceed to PayPal retains that label.

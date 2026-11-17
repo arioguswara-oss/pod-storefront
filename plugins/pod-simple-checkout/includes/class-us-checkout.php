@@ -38,7 +38,7 @@ final class POD_SC_US_Checkout {
 
 	/** Presentation allowlist only; never edits a gateway, its label, or its settings. */
 	public static function pay_now_config() {
-		$ids = (array) apply_filters( 'pod_sc_pay_now_gateway_ids', array( 'paypal', 'ppcp-gateway', 'ppcp-credit-card-gateway', 'stripe', 'stripe_cc', 'woocommerce_payments' ) );
+		$ids = (array) apply_filters( 'pod_sc_pay_now_gateway_ids', array( 'paypal', 'ppcp-gateway', 'ppcp-credit-card-gateway', 'stripe', 'stripe_cc', 'woocommerce_payments', 'vccp-gateway-paypal', 'vccp-gateway-banxa' ) );
 		$eligible = array();
 		if ( WC()->cart && WC()->cart->needs_payment() ) {
 			foreach ( WC()->payment_gateways()->payment_gateways() as $gateway ) {

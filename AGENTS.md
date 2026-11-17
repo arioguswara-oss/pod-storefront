@@ -5,7 +5,7 @@
 - Inspeksi publik baca-saja diperbolehkan. Upload, aktivasi, konfigurasi, pengujian yang menulis cart/order, dan perubahan lain pada website live memerlukan otorisasi eksplisit pengguna. Jangan mengakses database produksi tanpa otorisasi.
 - Buat perubahan melalui branch dan pull request; jangan merge otomatis.
 - Gunakan hanya GitHub untuk source, review, dan artefak rilis (Releases, Actions Artifacts, atau folder paket review versi di repository). Jangan mengunggah paket proyek ke Google Drive atau layanan lain.
-- Prioritas saat ini Issue #7, patch label minimal v1.2.1 dari baseline codex/simple-us-checkout-v1.2.0. PR sebelumnya tidak diubah; hanya teks native checkout pada gateway kompatibel. Theme sudah aktif dan ditinjau pengguna; jangan mengubah berkas theme. Implementasikan shopping flow melalui API WooCommerce tanpa mengubah gateway, webhook pembayaran, atau data produksi.
+- Prioritas saat ini Issue #9, patch allowlist minimal v1.2.2 dari baseline codex/pay-now-label-v1.2.1. PR sebelumnya tidak diubah; hanya teks native checkout pada gateway kompatibel. Theme sudah aktif dan ditinjau pengguna; jangan mengubah berkas theme. Implementasikan shopping flow melalui API WooCommerce tanpa mengubah gateway, webhook pembayaran, atau data produksi.
 - Theme berada di `themes/pod-store-theme`; plugin di `plugins/pod-simple-checkout`.
 - Hindari menyalin template WooCommerce sebelum benar-benar diperlukan.
 - Bangun kedua paket dengan `python3 scripts/build.py`. Jangan commit hasil `dist/` atau kredensial.
