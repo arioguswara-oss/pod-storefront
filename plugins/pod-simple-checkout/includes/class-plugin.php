@@ -46,7 +46,7 @@ final class POD_SC_Plugin {
 	}
 
 	public static function assets() {
-		$enhance_product = ( is_product() || POD_SC_Shopping_UX::enabled() ) && ( POD_SC_Settings::enabled( 'buy_now' ) || POD_SC_Settings::enabled( 'ajax' ) );
+		$enhance_product = ( is_product() || ( POD_SC_Shopping_UX::enabled() && ! is_checkout() && ! is_account_page() ) ) && ( POD_SC_Settings::enabled( 'buy_now' ) || POD_SC_Settings::enabled( 'ajax' ) );
 		if ( $enhance_product ) {
 			wp_enqueue_style( 'pod-simple-checkout-product', POD_SC_URL . 'assets/product.css', array(), POD_SC_VERSION );
 			wp_enqueue_script( 'pod-simple-checkout', POD_SC_URL . 'assets/product.js', array( 'jquery', 'wc-add-to-cart', 'wc-cart-fragments' ), POD_SC_VERSION, true );

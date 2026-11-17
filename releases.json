@@ -1,4 +1,13 @@
 {
-  "theme": {"slug": "pod-store-theme", "version": "0.1.0", "status": "review-candidate"},
-  "plugin": {"slug": "pod-simple-checkout", "version": "1.0.0", "status": "review-candidate", "archive_name": "pod-simple-checkout-v1.0.0.zip"}
+  "theme": {
+    "slug": "pod-store-theme",
+    "version": "0.1.0",
+    "status": "review-candidate"
+  },
+  "plugin": {
+    "slug": "pod-simple-checkout",
+    "version": "1.1.0",
+    "status": "review-candidate",
+    "archive_name": "pod-simple-checkout-v1.1.0.zip"
+  }
 }

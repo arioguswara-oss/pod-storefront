@@ -93,7 +93,16 @@ final class POD_SC_Shopping_UX {
 				<?php
 			}
 			echo '</ul><details class="pod-sc-native-totals"><summary>' . esc_html__( 'Shipping, discounts & totals', 'pod-simple-checkout' ) . '</summary>';
+			// Native totals are an estimate here. Shipping/address editing stays on native cart/checkout.
+			ob_start();
 			woocommerce_cart_totals();
+			$totals = new WP_HTML_Tag_Processor( ob_get_clean() );
+			while ( $totals->next_tag() ) {
+				if ( in_array( $totals->get_tag(), array( 'INPUT', 'SELECT', 'BUTTON' ), true ) ) { $totals->set_attribute( 'disabled', true ); }
+				if ( $totals->has_class( 'shipping-calculator-button' ) ) { $totals->remove_class( 'shipping-calculator-button' ); $totals->set_attribute( 'href', wc_get_cart_url() ); }
+			}
+			echo $totals->get_updated_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- native WooCommerce template with constrained attributes.
+			echo '<p>' . esc_html__( 'Edit shipping and coupons in the full bag or at checkout.', 'pod-simple-checkout' ) . '</p>';
 			echo '</details><footer class="pod-sc-bag-footer"><div><span>' . esc_html__( 'Subtotal', 'pod-simple-checkout' ) . '</span><strong>';
 			wc_cart_totals_subtotal_html();
 			echo '</strong></div><p>' . esc_html__( 'Shipping and taxes confirmed at checkout.', 'pod-simple-checkout' ) . '</p><a class="pod-sc-checkout" href="' . esc_url( wc_get_checkout_url() ) . '">' . esc_html__( 'Checkout', 'pod-simple-checkout' ) . '</a><a class="pod-sc-full-bag" href="' . esc_url( wc_get_cart_url() ) . '">' . esc_html__( 'View full bag & coupons', 'pod-simple-checkout' ) . '</a></footer>';

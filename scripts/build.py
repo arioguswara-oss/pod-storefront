@@ -19,6 +19,7 @@ COMPONENTS = {
         "pod-simple-checkout.php": "Plugin Name: POD Simple Checkout",
         "readme.txt": None,
         "includes/class-cart.php": None, "includes/class-plugin.php": None,
+        "includes/class-shopping-ux.php": None, "assets/shopping.js": None, "assets/shopping.css": None,
         "includes/class-settings.php": None, "includes/class-checkout.php": None,
         "assets/product.js": None, "assets/product.css": None, "assets/checkout.css": None,
     }),

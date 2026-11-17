@@ -66,6 +66,9 @@
     const surface = document.createElement('input'); surface.type = 'hidden'; surface.name = 'pod_sc_surface'; surface.value = 'sheet'; form.append(surface);
     document.dispatchEvent(new CustomEvent('pod-sc-form-ready', { detail: body }));
     const jq = window.jQuery(form);
+    const headingPrice = body.querySelector('.pod-sc-sheet-price');
+    const initialPrice = headingPrice.innerHTML;
+    jq.on('reset_data', () => { headingPrice.innerHTML = initialPrice; });
     form.querySelectorAll('.variations select').forEach(select => {
       const group = document.createElement('div'); group.className = 'pod-sc-chips'; group.setAttribute('role', 'group');
       group.setAttribute('aria-label', select.closest('tr')?.querySelector('label')?.textContent || select.name);
@@ -160,7 +163,7 @@
       retry.addEventListener('click', () => changeBag(command,key)); area.append(retry);
     } finally {
       pending = false; closeButton.disabled = false; body.removeAttribute('aria-busy');
-      body.querySelectorAll('button,input').forEach(element => { element.disabled = false; });
+      body.querySelectorAll('button,input').forEach(element => { if (!element.closest('.pod-sc-native-totals')) element.disabled = false; });
     }
   }
   async function commandFor(item, action, quantity) {
@@ -181,6 +184,7 @@
   }
   body.addEventListener('click', event => {
     if (mode !== 'bag') return;
+    if (pending && event.target.closest('a')) { event.preventDefault(); return; }
     const item = event.target.closest('.pod-sc-bag-item'); if (!item || pending) return;
     if (event.target.closest('.pod-sc-remove')) { commandFor(item,'remove'); return; }
     const step = event.target.closest('[data-delta]'); if (!step) return;

@@ -1,3 +1,15 @@
+1.1.0 — Issue #4 UX v0.2.0, Phases 1 and 2
+- Catalog product bottom sheet using native WooCommerce simple/variable forms.
+- Actual attribute chips, selected native prices, +/- quantities and fallback URLs.
+- Accessible native dialog, focus loop/return, Escape/backdrop, scroll lock.
+- Bag bottom sheet / desktop drawer with native cart quantity/remove and totals.
+- Session-scoped CSRF, pre-session locks and bounded command replay protection.
+- Preserve existing items for all product-sheet purchases; never empty the bag.
+- Compact Classic Cart cards; native Cart Blocks and checkout remain supported.
+- Local exact-viewport tests/screenshots and deterministic review ZIP.
+- Theme, gateways, live configuration and production records untouched.
+- Phase 3 checkout redesign deferred to a subsequent review checkpoint.
+
 1.0.0
 - Native simple/variable Buy Now with direct checkout for that intent only.
 - Progressive AJAX product forms with native mini-cart/count fragments.
