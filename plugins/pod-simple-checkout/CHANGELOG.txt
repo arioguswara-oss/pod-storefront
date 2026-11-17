@@ -1,3 +1,12 @@
+1.2.0 — Phase 3 Simple US Checkout
+- Email-first Classic cards; one native input per key and native validation.
+- Shipping-first core forms; optional verified same-address mapping with editable billing.
+- Preserve required billing/shipping phone, country rules, account and legal fields.
+- Native shipping rates in a separate section, native summary and payment fragments.
+- One native Place Order with server totals; sticky only when safe.
+- Conservative native fallback for unknown field schemas/template overrides; native Blocks.
+- No copied templates, gateway/payment code, settings migration, theme or sheet changes.
+
 1.1.0 — Issue #4 UX v0.2.0, Phases 1 and 2
 - Catalog product bottom sheet using native WooCommerce simple/variable forms.
 - Actual attribute chips, selected native prices, +/- quantities and fallback URLs.

@@ -34,6 +34,11 @@ const number = text => Number(text.replace(/[^0-9.]/g, ''));
     await Promise.all([page.waitForURL('**/classic-checkout/'), page.locator('.pod-sc-buy-now').click()]);
   }
   async function billing(page) {
+    // Phase 3's native shipping fields are primary when its verified adapter is active.
+    if (await page.locator('body.pod-sc-us #shipping_first_name').count()) {
+      for (const [id,value] of Object.entries({shipping_first_name:'Synthetic',shipping_last_name:'Buyer',shipping_address_1:'123 Fixture Street',shipping_city:'Los Angeles',shipping_postcode:'90001'})) await page.locator('#'+id).fill(value);
+      await page.locator('#shipping_country').selectOption('US',{force:true}); await page.locator('#shipping_state').selectOption('CA',{force:true});
+    }
     for (const [id, value] of Object.entries({ billing_first_name: 'Synthetic', billing_last_name: 'Buyer', billing_address_1: '123 Fixture Street', billing_city: 'Los Angeles', billing_postcode: '90001', billing_phone: '2025550100', billing_email: 'buyer@example.invalid' })) {
       const field = page.locator('#' + id); if (await field.count() && await field.isVisible()) await field.fill(value);
     }
@@ -149,6 +154,7 @@ const number = text => Number(text.replace(/[^0-9.]/g, ''));
       await test(`Native zero-value synthetic order and validation (${loggedIn ? 'logged in' : 'guest'})`, async () => {
         settings(); checkout('classic'); const { context, page } = await fresh(); try {
           if (loggedIn) {
+            wp("$id=get_user_by('login','fixturebuyer')->ID;delete_user_meta($id,'_woocommerce_persistent_cart_'.get_current_blog_id());(new WC_Session_Handler())->delete_session((string)$id);");
             await page.goto(base + '/wp-login.php'); await page.locator('#user_login').fill('fixturebuyer'); await page.locator('#user_pass').fill('fixture-buyer-local');
             await Promise.all([page.waitForNavigation(), page.locator('#wp-submit').click()]);
           }

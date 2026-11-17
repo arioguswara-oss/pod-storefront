@@ -1,4 +1,4 @@
-POD Simple Checkout 1.1.0 — installation, acceptance and rollback
+POD Simple Checkout 1.2.0 — installation, acceptance and rollback
 
 BEFORE LIVE ACTIVATION
 
@@ -19,7 +19,7 @@ website; do not create or require an extra hosted staging site.
 
 INSTALL AND CONFIGURE (AFTER APPROVAL)
 
-Upload pod-simple-checkout-v1.1.0.zip in WordPress Admin > Plugins > Add New >
+Upload pod-simple-checkout-v1.2.0.zip in WordPress Admin > Plugins > Add New >
 Upload Plugin. If upgrading the prior plugin, use WordPress's normal replacement
 confirmation after backup. Activate the plugin. No CLI, npm or Composer is needed.
 
@@ -70,7 +70,7 @@ The sheet Buy Now always keeps existing buyer items, including when the older
 optional replacement setting is on. Keep that legacy option OFF; it still
 applies to standard product-page forms outside the sheet.
 
-Before owner-approved installation retain pod-simple-checkout-v1.0.0.zip. For
+Before owner-approved installation retain pod-simple-checkout-v1.1.0.zip. For
 a UX rollback, disable AJAX to restore canonical product/cart navigation, or
 deactivate this plugin and reinstall the prior reviewed version. Do not restore
 an old database over new orders. Existing theme files remain unchanged.
@@ -80,3 +80,25 @@ After approval test catalog and bag overlays at 320x740, 390x844, 768x1024 and
 refresh/back, shipping/tax/coupon totals and the canonical cart. Test actual
 extensions/cache/browser stack before widening buyer testing. No orders or
 gateway changes are authorized by these instructions.
+
+PHASE 3 UPGRADE FROM 1.1.0
+
+Retain pod-simple-checkout-v1.1.0.zip and a verified complete files/database
+backup before a separately approved upgrade. Replace the plugin through the
+WordPress dashboard. No page conversion, field deletion, order migration or
+store setting write occurs on activation; existing plugin settings are kept.
+
+Checkout UI ON enhances compatible native Classic templates. Blocks, unsupported
+builders/address fields and billing-only shipping rules keep native compatibility
+presentation. Same-address is default only for matching/blank native addresses;
+saved differing addresses remain separately editable. Billing/shipping phone and
+all required fields remain. Unknown addon fields trigger native layout.
+
+Verify actual addon/gateway DOM, country rules, address autocomplete, taxes and
+shipping in a separately authorized acceptance test. No paid transaction is
+authorized. A sticky button is not forced over fields, errors, consent or the
+keyboard; normal native placement is the safe fallback.
+
+Rollback the checkout presentation with Checkout UI OFF (product/cart sheets
+remain available), or replace only this plugin with retained v1.1.0. Do not
+restore an old DB over new orders or switch the reviewed theme/gateways.

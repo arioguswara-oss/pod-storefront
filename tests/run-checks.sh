@@ -7,6 +7,7 @@ wp eval 'if (!defined("POD_STOREFRONT_TEST_FIXTURE") || !POD_STOREFRONT_TEST_FIX
 python3 -m unittest discover -s tests -p 'test_*.py' -v
 node --check plugins/pod-simple-checkout/assets/product.js
 node --check plugins/pod-simple-checkout/assets/shopping.js
+node --check plugins/pod-simple-checkout/assets/checkout.js
 docker compose -f tests/compose.yml exec -T wordpress sh -c 'find wp-content/plugins/pod-simple-checkout -name "*.php" -print0 | xargs -0 -n1 php -l'
 wp plugin deactivate pod-simple-checkout
 node tests/e2e.cjs
@@ -18,6 +19,8 @@ node tests/ux-api.cjs
 node tests/ux-product.cjs
 node tests/ux-cart.cjs
 node tests/ux-edge.cjs
+node tests/phase3-browser.cjs
+node tests/phase3-sticky.cjs
 node tests/plugin-lifecycle.cjs
 sh tests/rollback.sh
 git diff --check

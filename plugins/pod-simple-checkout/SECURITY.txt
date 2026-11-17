@@ -29,10 +29,17 @@ POD Simple Checkout 1.0.0 — security and data scope
 - Dynamic responses send no-cache headers and LiteSpeed's documented per-response
   no-cache action. No cache plugin, Redis or CDN configuration is written.
 - No activation/deactivation migration, product/category/image/order deletion,
-  gateway configuration or raw card data processing is performed. Checkout JS
-  and payment submission remain WooCommerce's own code.
+  gateway configuration or raw card data processing is performed. Address/placement JS only mirrors declared address inputs and positions the
+  native submit container. Totals, payment submission and order processing remain
+  WooCommerce's own code.
 - Nonces are CSRF protection, not login or payment authorization. WooCommerce
   independently enforces guest/account, stock, address, terms and order rules.
 
 Use current supported WordPress/WooCommerce/PHP versions. Review third-party
 cart/checkout extensions and real cache behavior before owner-approved activation.
+
+Phase 3 address adaptation is gated by native checkout/update-order-review nonce
+validation plus an additional form nonce and conservative compatibility checks.
+It copies only declared name/address/company fields, preserves native validation
+and extension field hooks, and never reads or serializes payment/card fields.
+The enhancement has no custom order creation or payment-processing endpoint.
