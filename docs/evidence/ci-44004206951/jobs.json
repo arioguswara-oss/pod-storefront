@@ -1,0 +1,113 @@
+{
+  "total_count": 4,
+  "jobs": [
+    {
+      "id": 133775422196,
+      "run_id": 44004206951,
+      "workflow_name": "Theme and package checks",
+      "head_branch": "codex/zet-style-shopping-ux-v0.2.0",
+      "run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/runs/44004206951",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVwqj3c8AAAAfJaLy9A",
+      "head_sha": "55aaeba16fe508149f4185a39c0caa5f52a3b757",
+      "url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/jobs/133775422196",
+      "html_url": "https://github.com/arioguswara-oss/pod-storefront/actions/runs/44004206951/job/133775422196",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-17T02:36:13Z",
+      "started_at": "2026-11-17T02:36:13Z",
+      "completed_at": "2026-11-17T02:36:14Z",
+      "name": "packages (7.4)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/check-runs/133775422196",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 133775422452,
+      "run_id": 44004206951,
+      "workflow_name": "Theme and package checks",
+      "head_branch": "codex/zet-style-shopping-ux-v0.2.0",
+      "run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/runs/44004206951",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVwqj3c8AAAAfJaLz9A",
+      "head_sha": "55aaeba16fe508149f4185a39c0caa5f52a3b757",
+      "url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/jobs/133775422452",
+      "html_url": "https://github.com/arioguswara-oss/pod-storefront/actions/runs/44004206951/job/133775422452",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-11-17T02:36:13Z",
+      "started_at": "2026-11-17T02:36:13Z",
+      "completed_at": "2026-11-17T02:36:14Z",
+      "name": "packages (8.3)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/check-runs/133775422452",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 133775422453,
+      "run_id": 44004206951,
+      "workflow_name": "Theme and package checks",
+      "head_branch": "codex/zet-style-shopping-ux-v0.2.0",
+      "run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/runs/44004206951",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVwqj3c8AAAAfJaLz9Q",
+      "head_sha": "55aaeba16fe508149f4185a39c0caa5f52a3b757",
+      "url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/jobs/133775422453",
+      "html_url": "https://github.com/arioguswara-oss/pod-storefront/actions/runs/44004206951/job/133775422453",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-11-17T02:36:13Z",
+      "started_at": "2026-11-17T02:36:13Z",
+      "completed_at": "2026-11-17T02:36:14Z",
+      "name": "browser",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/check-runs/133775422453",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    },
+    {
+      "id": 133775422486,
+      "run_id": 44004206951,
+      "workflow_name": "Theme and package checks",
+      "head_branch": "codex/zet-style-shopping-ux-v0.2.0",
+      "run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/runs/44004206951",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVwqj3c8AAAAfJaL0Fg",
+      "head_sha": "55aaeba16fe508149f4185a39c0caa5f52a3b757",
+      "url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/actions/jobs/133775422486",
+      "html_url": "https://github.com/arioguswara-oss/pod-storefront/actions/runs/44004206951/job/133775422486",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-11-17T02:36:13Z",
+      "started_at": "2026-11-17T02:36:13Z",
+      "completed_at": "2026-11-17T02:36:14Z",
+      "name": "packages (8.4)",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/arioguswara-oss/pod-storefront/check-runs/133775422486",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 0,
+      "runner_name": "",
+      "runner_group_id": 0,
+      "runner_group_name": ""
+    }
+  ]
+}
