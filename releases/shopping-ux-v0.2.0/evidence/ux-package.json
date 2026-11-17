@@ -1,0 +1,11 @@
+{
+  "file": "pod-simple-checkout-v1.1.0.zip",
+  "sha256": "09eae65a28850daacbd8566dfd15df598b06a6730e6971158f41f3ef7c42c6a1",
+  "bytes": 36710,
+  "files": 16,
+  "single_root": "pod-simple-checkout/",
+  "crc": "passed",
+  "archive_matches_source": "passed",
+  "installed_files_match_zip": "passed",
+  "independent_rebuild": "passed"
+}

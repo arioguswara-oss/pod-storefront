@@ -1,0 +1,7 @@
+{
+  "scope": "New local fixture log lines during resumed final testing",
+  "new_lines": 4,
+  "fatal_parse_uncaught_lines": 0,
+  "plugin_path_error_lines": 0,
+  "wordpress_update_connection_warning_lines": 4
+}

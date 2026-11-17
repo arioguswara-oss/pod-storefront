@@ -1,0 +1,122 @@
+[
+  {
+    "file": "screenshots/ux-product-320.png",
+    "png_width": 320,
+    "png_height": 740,
+    "sha256": "e11c7300767547c4274db6585a15c239c6a5298d117b9b539dd2bebef72f0517"
+  },
+  {
+    "file": "screenshots/ux-product-390.png",
+    "png_width": 390,
+    "png_height": 844,
+    "sha256": "bf552c7256f1ecae5d1e40ffe79bb33a575f541ee468411195f71b0a7e0e4900"
+  },
+  {
+    "file": "screenshots/ux-product-768.png",
+    "png_width": 768,
+    "png_height": 1024,
+    "sha256": "6b49502583f9d5b4b2549c716e7ad946b9fd4b316078e04969d941dbcd9ab70e"
+  },
+  {
+    "file": "screenshots/ux-product-1440.png",
+    "png_width": 1440,
+    "png_height": 900,
+    "sha256": "03b56a5753ad96c8b9a4fa0bbe04da466e1980ad028ab9ce01bee9b9795a0e53"
+  },
+  {
+    "file": "screenshots/ux-cart-320.png",
+    "png_width": 320,
+    "png_height": 740,
+    "sha256": "1baeb1605e26261330d2a5c0885e32bdac31ad51ebc6ad5cb9fc83d4ee07a67e"
+  },
+  {
+    "file": "screenshots/ux-cart-390.png",
+    "png_width": 390,
+    "png_height": 844,
+    "sha256": "ec32dd1d2e8b3a418db161b89685a99e8fabf47129abfb312612b8b746fd3445"
+  },
+  {
+    "file": "screenshots/ux-cart-768.png",
+    "png_width": 768,
+    "png_height": 1024,
+    "sha256": "0758f795fbbf3d8e2befd40f127be2f4a85047d3947a62c0a093494aa78bdea8"
+  },
+  {
+    "file": "screenshots/ux-cart-1440.png",
+    "png_width": 1440,
+    "png_height": 900,
+    "sha256": "b300fdda11905700ccee15f455915acc26b7e4b027bcd0f39e00380bcfc481a6"
+  },
+  {
+    "file": "screenshots/ux-canonical-cart-320.png",
+    "png_width": 320,
+    "png_height": 1556,
+    "sha256": "7bd790b51f74af79424b79dd0026b6524cd7ed383ccc161bc54806cfce38f1b6"
+  },
+  {
+    "file": "screenshots/ux-canonical-cart-390.png",
+    "png_width": 390,
+    "png_height": 1492,
+    "sha256": "1b42006d84e924da4c3835bcefbf22464489e1c674dfbd33adfb8c372563936f"
+  },
+  {
+    "file": "screenshots/ux-canonical-cart-768.png",
+    "png_width": 768,
+    "png_height": 1437,
+    "sha256": "cd29dbae383f15648400c834dc912fc855536ec6d0c7094c407fa09f0a438669"
+  },
+  {
+    "file": "screenshots/ux-canonical-cart-1440.png",
+    "png_width": 1440,
+    "png_height": 1459,
+    "sha256": "0ed023bebed0fea5044708737f922bab05eb2c9d391d593eab366acab8067c5a"
+  },
+  {
+    "file": "screenshots/ux-cart-long-320.png",
+    "png_width": 320,
+    "png_height": 740,
+    "sha256": "5f6e96f8aa2e6d08e742bb8246756d96a648a4e2ced3f8bbf9fe69e2ba132041"
+  },
+  {
+    "file": "screenshots/ux-cart-long-390.png",
+    "png_width": 390,
+    "png_height": 844,
+    "sha256": "fa4a53bbe1d6d2d07be7845d7ba504c6433e6ed4ce22516da4b225eecbae1011"
+  },
+  {
+    "file": "screenshots/ux-cart-long-768.png",
+    "png_width": 768,
+    "png_height": 1024,
+    "sha256": "946d53444da2d18acb2f4a46ef21b32e014e1d28e57b8375cde8ff4bbf1ceca0"
+  },
+  {
+    "file": "screenshots/ux-cart-long-1440.png",
+    "png_width": 1440,
+    "png_height": 900,
+    "sha256": "78d128460f72904bccb32475f0e3cb263120f5e2b916787911224ac572c3b999"
+  },
+  {
+    "file": "screenshots/ux-cart-long-top-320.png",
+    "png_width": 320,
+    "png_height": 740,
+    "sha256": "d3dba938568eb8e965f7713194b999d645312430f2fc5802d1fa6e13f8406046"
+  },
+  {
+    "file": "screenshots/ux-cart-long-top-390.png",
+    "png_width": 390,
+    "png_height": 844,
+    "sha256": "d5d02defac3bf4650d457c4f8202017231b1696aef74ee0a70a7d9ad0d7617d0"
+  },
+  {
+    "file": "screenshots/ux-cart-long-top-768.png",
+    "png_width": 768,
+    "png_height": 1024,
+    "sha256": "47b25614b237f87ce59f376efad8bcf42d1acfd1e2e71d6281035c179eb385d4"
+  },
+  {
+    "file": "screenshots/ux-cart-long-top-1440.png",
+    "png_width": 1440,
+    "png_height": 900,
+    "sha256": "c1d4be42e713fea9198287b500a6995ad6ca809823023d446d5defd7c8adacdc"
+  }
+]

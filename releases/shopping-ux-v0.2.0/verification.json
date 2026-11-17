@@ -1,0 +1,58 @@
+{
+  "source_commit": "810e11071182a12d4b9af718ada061c671b10f20",
+  "baseline_commit": "76a732655a1d2b391aa6ad1eeaeae221a564e2e4",
+  "ux_checkpoint": "0.2.0",
+  "plugin_version": "1.1.0",
+  "local_test_date_utc": "2026-11-17",
+  "runtime": {
+    "wordpress": "7.1.4",
+    "woocommerce": "11.3.0",
+    "theme": "0.1.0",
+    "php": "8.3.36",
+    "browser": "Chromium 156.0.8078.79"
+  },
+  "php_syntax_versions": [
+    "7.4.33",
+    "8.3.36",
+    "8.4.27"
+  ],
+  "exact_ux_viewports": [
+    [
+      320,
+      740
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "local_suite_exit_code": 0,
+  "final_zip_ui_lifecycle_exit_code": 0,
+  "results": "evidence/",
+  "package": {
+    "file": "pod-simple-checkout-v1.1.0.zip",
+    "sha256": "09eae65a28850daacbd8566dfd15df598b06a6730e6971158f41f3ef7c42c6a1",
+    "bytes": 36710,
+    "files": 16,
+    "single_root": "pod-simple-checkout/",
+    "crc": "passed",
+    "archive_matches_source": "passed",
+    "installed_files_match_zip": "passed",
+    "independent_rebuild": "passed"
+  },
+  "ci_pass_claimed": false,
+  "ci_note": "Local results do not imply GitHub runner execution; see PR checks/current CI note.",
+  "theme_files_changed": false,
+  "production_modified": false,
+  "phase_1": "complete in supported native simple/variable scope",
+  "phase_2": "complete in supported native simple/variable scope",
+  "phase_3": "technical plan only; not implemented"
+}

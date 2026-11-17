@@ -1,0 +1,11 @@
+PASS product sheet 320 740
+PASS product sheet 390 844
+PASS product sheet 768 1024
+PASS product sheet 1440 900
+PASS long names / seven lines 320 740
+PASS long names / seven lines 390 844
+PASS long names / seven lines 768 1024
+PASS long names / seven lines 1440 900
+Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS
+Deactivate/reactivate without fatal errors or record changes: PASS
+Missing WooCommerce: inert frontend and clear administrator notice: PASS

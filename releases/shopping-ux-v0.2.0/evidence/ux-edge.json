@@ -1,0 +1,18 @@
+[
+  {
+    "name": "long names and 7-line scrolling 320x740",
+    "status": "passed"
+  },
+  {
+    "name": "long names and 7-line scrolling 390x844",
+    "status": "passed"
+  },
+  {
+    "name": "long names and 7-line scrolling 768x1024",
+    "status": "passed"
+  },
+  {
+    "name": "long names and 7-line scrolling 1440x900",
+    "status": "passed"
+  }
+]
