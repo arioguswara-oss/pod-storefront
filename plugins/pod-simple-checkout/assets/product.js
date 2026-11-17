@@ -11,7 +11,9 @@
     const hex = [...bytes].map(byte => byte.toString(16).padStart(2, '0')).join('');
     return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
   };
-  document.querySelectorAll('form.cart').forEach(form => {
+  function init(root = document) { root.querySelectorAll('form.cart').forEach(form => {
+    if (form.dataset.podScBound) return;
+    form.dataset.podScBound = 'yes';
     const product = form.querySelector('[name="pod_sc_product_id"]');
     const identifier = form.querySelector('[name="pod_sc_request_id"]');
     const messages = form.querySelector('.pod-sc-messages');
@@ -87,6 +89,7 @@
           if (payload.replayed) window.jQuery(document.body).trigger('wc_fragment_refresh');
         }
         identifier.value = uuid() || context.request_id;
+        document.dispatchEvent(new CustomEvent('pod-sc-added', { detail: { payload, form } }));
         if (payload.redirect) {
           const destination = new URL(payload.redirect, location.href);
           if (destination.origin !== location.origin) throw new Error('Unexpected redirect');
@@ -99,5 +102,7 @@
         messages.append(' ', link);
       } finally { if (state.busy) busy(false); }
     });
-  });
+  }); }
+  init();
+  document.addEventListener('pod-sc-form-ready', event => init(event.detail));
 })();

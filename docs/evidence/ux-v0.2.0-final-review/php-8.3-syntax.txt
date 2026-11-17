@@ -1,0 +1,6 @@
+No syntax errors detected in /src/includes/class-settings.php
+No syntax errors detected in /src/includes/class-cart.php
+No syntax errors detected in /src/includes/class-plugin.php
+No syntax errors detected in /src/includes/class-checkout.php
+No syntax errors detected in /src/includes/class-shopping-ux.php
+No syntax errors detected in /src/pod-simple-checkout.php

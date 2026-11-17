@@ -1,0 +1,44 @@
+{
+  "review_date_utc": "2026-11-17",
+  "reviewed_head": "55aaeba16fe508149f4185a39c0caa5f52a3b757",
+  "runtime_source_commit": "810e11071182a12d4b9af718ada061c671b10f20",
+  "runtime_changed": false,
+  "workflow_changed": false,
+  "ci": {
+    "run_id": 44004206951,
+    "github_conclusion": "failure",
+    "review_classification": "BLOCKED",
+    "cause": "The job was not started because your account is locked due to a billing issue.",
+    "category": "GitHub account/Actions billing restriction before runner allocation",
+    "executed_steps": 0,
+    "source_dependency_failure_demonstrated": false,
+    "browser_job_log": "HTTP 404 BlobNotFound",
+    "annotation_read": "Public GitHub REST HTTP 200; connector annotation URL rejected"
+  },
+  "rechecked_locally": {
+    "package_unit_tests": 6,
+    "php_syntax_versions": [
+      "7.4",
+      "8.3",
+      "8.4"
+    ],
+    "php_files_per_version": 6,
+    "javascript_syntax": "passed",
+    "shell_syntax": "passed",
+    "zip_source_manifest_crc": "passed",
+    "public_zip_download_match": "passed",
+    "independent_build_match": "passed",
+    "screenshot_checksums_verified": 20,
+    "theme_and_checkout_source_unchanged": "passed"
+  },
+  "prior_matching_runtime_evidence": "../../../releases/shopping-ux-v0.2.0/evidence/",
+  "integration_suite_rerun_this_review": false,
+  "zip_sha256": "09eae65a28850daacbd8566dfd15df598b06a6730e6971158f41f3ef7c42c6a1",
+  "decision": {
+    "owner_review": "GO",
+    "isolated_non_production_testing": "GO with documented compatibility checks",
+    "production_or_automatic_merge": "NO-GO"
+  },
+  "phase_3": "implementation specification only, no code",
+  "production_modified": false
+}

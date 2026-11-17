@@ -1,12 +1,13 @@
-POD Simple Checkout 1.0.0 — compatibility modes and limits
+POD Simple Checkout 1.1.0 — compatibility modes and limits
 
 NATIVE SIMPLE / VARIABLE PRODUCT FORMS
 
 Buy Now is inserted through woocommerce_after_add_to_cart_button for purchasable,
 in-stock native simple/variable products. Size/color selections and quantity are
 submitted with the original form data. WooCommerce add-to-cart validation hooks
-and WC_Cart::add_to_cart own stock, attribute matching and line data. Normal
-catalog/archive AJAX remains WooCommerce's own feature and setting.
+and WC_Cart::add_to_cart own stock, attribute matching and line data. Compatible catalog/archive buttons become progressive Choose Options links.
+The sheet renders the original native form and available-variation JSON. Core
+variation matching also supports WooCommerce's large-product AJAX lookup.
 
 Grouped, external, composite, bundle, subscription and block-based product
 purchase interfaces are not enhanced automatically. They retain their native
@@ -84,3 +85,46 @@ No gateway registration, filtering, settings changes, card fields, external
 payment requests or custom order creation are implemented. Testing a live
 gateway, address-autocomplete vendor or production LiteSpeed/CDN stack is not
 part of the local synthetic acceptance suite.
+
+SHOPPING SHEETS (ISSUE #4 PHASES 1–2, UX v0.2.0)
+
+Native simple/variable catalog buttons are enhanced only when AJAX is enabled.
+POD Store Theme's header bag and header links to the configured cart URL open
+the cart sheet. Other themes can opt a bag link in with data-pod-sc-bag. Other
+links remain canonical; Product Blocks/custom card builders are not intercepted.
+WooCommerce Cart Blocks retain their native responsive cards. Classic Cart
+uses scoped CSS over the original table/form, keeping native controls/totals.
+No WooCommerce templates are copied, checkout fields changed, or live options
+written. The new cart endpoint uses WC_Cart quantity/remove/stock/totals APIs
+and the native woocommerce_update_cart_validation extension hook.
+
+The expandable totals panel renders native WooCommerce discounts, fees, tax,
+shipping and total. Shipping choices are read-only estimates in the sheet;
+edit shipping/coupons on the full native bag or checkout, where WooCommerce's
+normal scripts own recalculation. The sticky footer explicitly shows subtotal,
+not a custom estimate of a final amount. Display currency comes from WooCommerce
+(USD in the acceptance fixture); the plugin does not convert or override it.
+
+The product sheet preserves existing lines even if legacy replacement is on.
+Standard product forms retain the earlier explicit opt-in replacement behavior.
+The dialog is dismissible via close, Escape or outside backdrop, with focus
+return, focus loop, scroll lock and safe-area padding. While a write is pending
+it stays open; after a connection failure the buyer can retry the same command
+or reopen the bag. Request records expire after 15 minutes. Quantity commands
+are absolute; stale replays do not overwrite later updates. Unrelated native
+cart/Store API/addon writes do not share the plugin's session lock.
+
+Unsupported dialog/fetch or AJAX off retains product/cart URL fallback. Native
+WooCommerce no-JavaScript variation limitations still apply. Addons that depend
+on PDP-only initialization (engraving, bundles, subscriptions, uploads or
+custom validation/UI) should keep their canonical form. Integration opt-outs:
+
+add_filter('pod_sc_shopping_sheets_enabled', '__return_false');
+add_filter('pod_sc_sheet_product_supported', function ($ok, $product) {
+    return $ok; // Return false for product/addon interfaces needing a full PDP.
+}, 10, 2);
+
+Tested runtime locally: WordPress 7.1.4, WooCommerce 11.3.0, PHP 8.3, Chromium.
+No claim of production LiteSpeed/CDN, real gateway, third-party addon, Safari
+or Firefox certification. Phase 3 US checkout redesign is not included; the
+existing Classic/Blocks compatibility modes and payment area remain intact.

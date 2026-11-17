@@ -35,7 +35,7 @@ wp option get stylesheet > tests/results/previous-theme.txt
 wp eval-file /fixtures/snapshot.php > tests/results/before.json
 container=$(docker compose -f tests/compose.yml ps -q wordpress)
 docker cp dist/pod-store-theme-0.1.0.zip "$container:/tmp/pod-store-theme.zip"
-docker cp dist/pod-simple-checkout-v1.0.0.zip "$container:/tmp/pod-simple-checkout.zip"
+docker cp dist/$(python3 -c 'import json; print(json.load(open("releases.json"))["plugin"]["archive_name"])') "$container:/tmp/pod-simple-checkout.zip"
 wp theme install /tmp/pod-store-theme.zip --activate
 wp plugin install /tmp/pod-simple-checkout.zip --activate
 docker compose -f tests/compose.yml exec -T wordpress mkdir -p wp-content/mu-plugins

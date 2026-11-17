@@ -27,6 +27,7 @@ jobs:
         run: |
           node --check themes/pod-store-theme/assets/js/navigation.js
           node --check plugins/pod-simple-checkout/assets/product.js
+          node --check plugins/pod-simple-checkout/assets/shopping.js
       - name: Package tests and build
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -64,6 +65,12 @@ jobs:
           node tests/plugin-concurrency.cjs
       - name: Plugin browser, native checkout and compatibility checks
         run: node tests/plugin-browser.cjs
+      - name: Issue 4 product and cart sheets (exact mobile/tablet/desktop viewports)
+        run: |
+          node tests/ux-api.cjs
+          node tests/ux-product.cjs
+          node tests/ux-cart.cjs
+          node tests/ux-edge.cjs
       - name: Plugin lifecycle and existing-record preservation
         run: node tests/plugin-lifecycle.cjs
       - name: Rollback and standalone theme checks

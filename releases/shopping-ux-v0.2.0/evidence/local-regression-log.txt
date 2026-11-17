@@ -1,0 +1,114 @@
+test_archive_path_cannot_escape_output (test_build.PackageTests.test_archive_path_cannot_escape_output) ... ok
+test_independent_versioned_and_reproducible_packages (test_build.PackageTests.test_independent_versioned_and_reproducible_packages) ... ok
+test_missing_template_rejected (test_build.PackageTests.test_missing_template_rejected) ... ok
+test_symlinks_and_output_in_component_rejected (test_build.PackageTests.test_symlinks_and_output_in_component_rejected) ... ok
+test_theme_has_no_store_migrations_or_writes (test_build.PackageTests.test_theme_has_no_store_migrations_or_writes) ... ok
+test_version_mismatch_rejected (test_build.PackageTests.test_version_mismatch_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.056s
+
+OK
+Built /tmp/tmp30ydwsjg/output/pod-store-theme-0.1.0.zip (14 files; review-candidate)
+Built /tmp/tmp30ydwsjg/output/pod-simple-checkout-v1.1.0.zip (16 files; review-candidate)
+Built /tmp/tmp30ydwsjg/output/pod-store-theme-0.1.0.zip (14 files; review-candidate)
+Built /tmp/tmp30ydwsjg/output/pod-simple-checkout-v1.1.0.zip (16 files; review-candidate)
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/includes/class-settings.php
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/includes/class-cart.php
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/includes/class-plugin.php
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/includes/class-checkout.php
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/includes/class-shopping-ux.php
+No syntax errors detected in wp-content/plugins/pod-simple-checkout/pod-simple-checkout.php
+Plugin 'pod-simple-checkout' deactivated.
+Success: Deactivated 1 of 1 plugins.
+home 320px: PASS
+category 320px: PASS
+product 320px: PASS
+Variable product: add/quantity/persist/remove/header count 320px: PASS
+Product search 320px: PASS
+Native AJAX add + Cart Block quantity/persist/remove 320px: PASS
+home 390px: PASS
+category 390px: PASS
+product 390px: PASS
+Variable product: add/quantity/persist/remove/header count 390px: PASS
+Product search 390px: PASS
+Native AJAX add + Cart Block quantity/persist/remove 390px: PASS
+home 768px: PASS
+category 768px: PASS
+product 768px: PASS
+Variable product: add/quantity/persist/remove/header count 768px: PASS
+Product search 768px: PASS
+Native AJAX add + Cart Block quantity/persist/remove 768px: PASS
+home 1440px: PASS
+category 1440px: PASS
+product 1440px: PASS
+Variable product: add/quantity/persist/remove/header count 1440px: PASS
+Product search 1440px: PASS
+Native AJAX add + Cart Block quantity/persist/remove 1440px: PASS
+Plugin 'pod-simple-checkout' activated.
+Success: Activated 1 of 1 plugins.
+PASS Simple addition, native mini-cart fragments and exact count
+PASS Replay and concurrent identical requests add exactly once
+PASS Invalid nonce/session token/identifier cannot reach the native handler
+PASS Variable product requires matching size/color and valid variation
+PASS Unavailable stock, quantity limits and sold-individually products
+PASS Extension validation rejects both intents without cart loss
+PASS Buy Now preserves existing cart and only its intent skips cart
+PASS Replacement is opt-in, Buy Now only, and invalid input preserves cart
+PASS Feature flags enforce disabled Buy Now/AJAX/direct-checkout behavior
+PASS Replacement can reduce a stock-limit quantity and rolls back failed candidate validation
+PASS WooCommerce native cart redirect preference remains respected
+PASS Settings sanitization permits known booleans only and preserves safe defaults
+20 concurrent duplicate rounds passed with exact count 1
+PASS AJAX → variable Buy Now → native Classic Checkout 320px
+PASS AJAX → variable Buy Now → native Classic Checkout 390px
+PASS AJAX → variable Buy Now → native Classic Checkout 768px
+PASS AJAX → variable Buy Now → native Classic Checkout 1440px
+PASS Empty checkout follows WooCommerce back to the accessible empty cart
+PASS Rapid repeated clicks and lost-response retry add exactly once
+PASS AJAX off: standard Add to Cart and Buy Now POST/redirect fallback
+PASS JavaScript unavailable: native simple Add to Cart and Buy Now work
+PASS Native zero-value synthetic order and validation (guest)
+PASS Native zero-value synthetic order and validation (logged in)
+PASS Guest-disabled setting is honored, no checkout field bypass
+PASS Native Checkout Block compatibility 320px
+PASS Native Checkout Block compatibility 390px
+PASS Native Checkout Block compatibility 768px
+PASS Native Checkout Block compatibility 1440px
+PASS WooCommerce admin settings capability, nonce and safe defaults
+PASS Independent theme and presentation-disabled compatibility modes
+PASS Product opt-out and file uploads use standard WooCommerce fallback
+PASS Session/nonce protection and native add-handler injection guard on every new route
+PASS Absolute quantity, native totals/fragments, purchase limits and no fractional truncation
+PASS Quantity/remove deduplication, conflict detection and stale replay cannot overwrite newer state
+PASS Fresh bag counts are isolated between guest sessions and cross-session keys cannot mutate others
+PASS Concurrent bag commands have at most one writer and maintain saved session consistency
+PASS Stock changed after selection is rejected without changing buyer quantity
+PASS product sheet 320 740
+PASS product sheet 390 844
+PASS product sheet 768 1024
+PASS product sheet 1440 900
+PASS cart sheet 320x740: empty, add, update, persistence, remove, keyboard
+PASS cart sheet 390x844: empty, add, update, persistence, remove, keyboard
+PASS cart sheet 768x1024: empty, add, update, persistence, remove, keyboard
+PASS cart sheet 1440x900: empty, add, update, persistence, remove, keyboard
+PASS rapid gestures and lost response retry change exactly once
+PASS Slow in-flight write cannot be dismissed or accidentally submitted twice
+PASS unavailable GET + network retry + disabled AJAX/JS keep canonical URLs
+PASS sheet Buy Now preserves existing buyer items even if legacy replacement option is enabled
+PASS canonical Classic Cart cards preserve native coupons, shipping, totals and update
+PASS long names / seven lines 320 740
+PASS long names / seven lines 390 844
+PASS long names / seven lines 768 1024
+PASS long names / seven lines 1440 900
+Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS
+Deactivate/reactivate without fatal errors or record changes: PASS
+Missing WooCommerce: inert frontend and clear administrator notice: PASS
+Success: Switched to 'Twenty Twenty-Five' theme.
+Success: Switched to 'POD Store Theme' theme.
+Plugin 'pod-simple-checkout' deactivated.
+Plugin 'woocommerce' deactivated.
+Success: Deactivated 2 of 2 plugins.
+Plugin 'woocommerce' activated.
+Plugin 'pod-simple-checkout' activated.
+Success: Activated 2 of 2 plugins.

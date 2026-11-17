@@ -1,7 +1,7 @@
 === POD Simple Checkout ===
 Requires at least: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 Requires Plugins: woocommerce
 WC requires at least: 11.3
 WC tested up to: 11.3
@@ -12,7 +12,10 @@ Buy Now, progressive AJAX Add to Cart, and a clean native WooCommerce checkout.
 
 == Description ==
 
-Product page > Buy Now > native checkout > native Place Order.
+Catalog > Choose Options > product sheet > Add to Cart / Buy Now.
+Header bag > cart sheet > native checkout. Canonical product/cart pages remain.
+UX checkpoint v0.2.0 (Issue #4 Phases 1 and 2) ships as plugin v1.1.0.
+Phase 3 US checkout restructuring is deferred to the next review checkpoint.
 
 Supports native simple and variable product forms, required size/color choices,
 quantities, stock and purchase validation, WooCommerce extension validation,
@@ -33,7 +36,7 @@ on the target WordPress installation.
 1. Read INSTALLATION.txt, COMPATIBILITY.txt and SECURITY.txt first.
 2. Back up files/database and retain the prior plugin ZIP. Record current cart,
    checkout page/type, shipping/tax display and gateway behavior.
-3. Upload pod-simple-checkout-v1.0.0.zip via Plugins > Add New > Upload Plugin.
+3. Upload pod-simple-checkout-v1.1.0.zip via Plugins > Add New > Upload Plugin.
 4. Activate ONLY after the owner explicitly approves the exact live operation.
 5. Open WooCommerce > POD Simple Checkout and review the defaults.
 
@@ -89,6 +92,12 @@ retained for reactivation; no uninstall data deletion or migration is performed.
 Never restore a database over new orders as a routine plugin rollback.
 
 == Changelog ==
+
+= 1.1.0 =
+Issue #4 Phases 1–2: native product option sheet, cart sheet/drawer, quantity
+steppers, safe request replay, compact Classic Cart cards, responsive/accessibility
+checks. Sheet purchases preserve existing bag items. Theme and checkout behavior
+remain compatible. Phase 3 US checkout restructuring is deferred.
 
 = 1.0.0 =
 Functional Buy Now; progressive AJAX product forms; native validation and

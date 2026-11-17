@@ -1,4 +1,4 @@
-POD Simple Checkout 1.0.0 — installation, acceptance and rollback
+POD Simple Checkout 1.1.0 — installation, acceptance and rollback
 
 BEFORE LIVE ACTIVATION
 
@@ -14,14 +14,13 @@ website; do not create or require an extra hosted staging site.
    shipping methods/taxes/coupons, current gateways and cache exclusions.
 3. Verify the ZIP's SHA-256 against the accompanying SHA256SUMS. The root folder
    must be pod-simple-checkout/. There are no development dependencies inside.
-4. Confirm the mode displayed under WooCommerce > POD Simple Checkout. The live
-   page was read-only verified as page 9, shortcode [woocommerce_checkout]. The
-   plugin detects the current page again at runtime; it does not edit the page.
+4. Confirm the mode displayed under WooCommerce > POD Simple Checkout. The owner reports Classic Checkout on the live website. Confirm the current
+   page/type before activation; this release does not change checkout pages.
 
 INSTALL AND CONFIGURE (AFTER APPROVAL)
 
-Upload pod-simple-checkout-v1.0.0.zip in WordPress Admin > Plugins > Add New >
-Upload Plugin. If replacing the old scaffold, use WordPress's normal replacement
+Upload pod-simple-checkout-v1.1.0.zip in WordPress Admin > Plugins > Add New >
+Upload Plugin. If upgrading the prior plugin, use WordPress's normal replacement
 confirmation after backup. Activate the plugin. No CLI, npm or Composer is needed.
 
 Open WooCommerce > POD Simple Checkout. Keep cart replacement OFF initially.
@@ -61,3 +60,23 @@ Retain the ZIP and prior plugin package. Reinstall the previous version only if
 needed. No theme switch or gateway configuration change is part of rollback.
 Do not restore the database as the first step: doing so can erase newer orders.
 Plugin settings are retained; short-lived request records expire normally.
+
+SHOPPING SHEETS CHECKPOINT
+
+Enabled with the existing AJAX setting; no new options or automatic migration.
+Catalog Choose Options has a canonical product URL. Header bag has the native
+cart URL. Native dialog/fetch unavailable or AJAX off: use those URLs instead.
+The sheet Buy Now always keeps existing buyer items, including when the older
+optional replacement setting is on. Keep that legacy option OFF; it still
+applies to standard product-page forms outside the sheet.
+
+Before owner-approved installation retain pod-simple-checkout-v1.0.0.zip. For
+a UX rollback, disable AJAX to restore canonical product/cart navigation, or
+deactivate this plugin and reinstall the prior reviewed version. Do not restore
+an old database over new orders. Existing theme files remain unchanged.
+
+After approval test catalog and bag overlays at 320x740, 390x844, 768x1024 and
+1440x900, keyboard focus/close, unavailable options, cart count/quantity/remove,
+refresh/back, shipping/tax/coupon totals and the canonical cart. Test actual
+extensions/cache/browser stack before widening buyer testing. No orders or
+gateway changes are authorized by these instructions.

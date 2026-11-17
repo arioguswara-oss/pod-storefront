@@ -1,0 +1,74 @@
+[
+  {
+    "name": "AJAX → variable Buy Now → native Classic Checkout 320px",
+    "status": "passed"
+  },
+  {
+    "name": "AJAX → variable Buy Now → native Classic Checkout 390px",
+    "status": "passed"
+  },
+  {
+    "name": "AJAX → variable Buy Now → native Classic Checkout 768px",
+    "status": "passed"
+  },
+  {
+    "name": "AJAX → variable Buy Now → native Classic Checkout 1440px",
+    "status": "passed"
+  },
+  {
+    "name": "Empty checkout follows WooCommerce back to the accessible empty cart",
+    "status": "passed"
+  },
+  {
+    "name": "Rapid repeated clicks and lost-response retry add exactly once",
+    "status": "passed"
+  },
+  {
+    "name": "AJAX off: standard Add to Cart and Buy Now POST/redirect fallback",
+    "status": "passed"
+  },
+  {
+    "name": "JavaScript unavailable: native simple Add to Cart and Buy Now work",
+    "status": "passed"
+  },
+  {
+    "name": "Native zero-value synthetic order and validation (guest)",
+    "status": "passed"
+  },
+  {
+    "name": "Native zero-value synthetic order and validation (logged in)",
+    "status": "passed"
+  },
+  {
+    "name": "Guest-disabled setting is honored, no checkout field bypass",
+    "status": "passed"
+  },
+  {
+    "name": "Native Checkout Block compatibility 320px",
+    "status": "passed"
+  },
+  {
+    "name": "Native Checkout Block compatibility 390px",
+    "status": "passed"
+  },
+  {
+    "name": "Native Checkout Block compatibility 768px",
+    "status": "passed"
+  },
+  {
+    "name": "Native Checkout Block compatibility 1440px",
+    "status": "passed"
+  },
+  {
+    "name": "WooCommerce admin settings capability, nonce and safe defaults",
+    "status": "passed"
+  },
+  {
+    "name": "Independent theme and presentation-disabled compatibility modes",
+    "status": "passed"
+  },
+  {
+    "name": "Product opt-out and file uploads use standard WooCommerce fallback",
+    "status": "passed"
+  }
+]
