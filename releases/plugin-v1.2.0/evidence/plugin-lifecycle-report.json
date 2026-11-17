@@ -1,0 +1,5 @@
+[
+  "Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS",
+  "Deactivate/reactivate without fatal errors or record changes: PASS",
+  "Missing WooCommerce: inert frontend and clear administrator notice: PASS"
+]

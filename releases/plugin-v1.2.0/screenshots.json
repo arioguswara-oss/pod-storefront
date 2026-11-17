@@ -1,0 +1,104 @@
+[
+  {
+    "file": "screenshots/phase3-default-320.png",
+    "width": 320,
+    "height": 3497,
+    "sha256": "55f87b2416c52070a43f0773f979920684b94c66c63bf50770d4247efc802d3e"
+  },
+  {
+    "file": "screenshots/phase3-default-390.png",
+    "width": 390,
+    "height": 3397,
+    "sha256": "a6b6908ed6e872ec53d32b1f99e46219784925810d7ef50880175c9cf1c39600"
+  },
+  {
+    "file": "screenshots/phase3-default-768.png",
+    "width": 768,
+    "height": 3299,
+    "sha256": "a1c2d7a18954fd68c8e34a15bcfa08ffc7c6f087ebe3a49c072d3d2f49af6399"
+  },
+  {
+    "file": "screenshots/phase3-default-1440.png",
+    "width": 1440,
+    "height": 3354,
+    "sha256": "d424fd30e9464e2841ec47c07e26e90350fa2cc3a396a299a5d13734a854d539"
+  },
+  {
+    "file": "screenshots/phase3-checkout-320.png",
+    "width": 320,
+    "height": 4128,
+    "sha256": "4de4985465658009f298311b6f9b58543d66390f49049647a62b46e4f664aec1"
+  },
+  {
+    "file": "screenshots/phase3-checkout-390.png",
+    "width": 390,
+    "height": 4028,
+    "sha256": "22e84054b5cad9ac7ed542b617c9ab01d92f4e2915443b03101feefba4b3b45c"
+  },
+  {
+    "file": "screenshots/phase3-checkout-768.png",
+    "width": 768,
+    "height": 3930,
+    "sha256": "18f3a7b802c15ec624daa01d637860790f3d2be5e3e1334b0b5c97b0e2093531"
+  },
+  {
+    "file": "screenshots/phase3-checkout-1440.png",
+    "width": 1440,
+    "height": 3985,
+    "sha256": "98d2189d9ab9c0768dd5013ce9e2ab2428b2c92905f5f865f44adf9a648f561e"
+  },
+  {
+    "file": "screenshots/phase3-submit-320.png",
+    "width": 320,
+    "height": 740,
+    "sha256": "d5dbf1bcb19a469874e351720faadb5f62eabb809c69b1dd74f682a8acbce517"
+  },
+  {
+    "file": "screenshots/phase3-submit-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "c6e5583de9e8e0b315590a5a9f6edfa0feb02b31c5ed73f720b7c5771429df9f"
+  },
+  {
+    "file": "screenshots/phase3-submit-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "0fab6cad461e86ac7d38c07eab1b7babf9f1572cf8cfa373a072bd2f0c6f8794"
+  },
+  {
+    "file": "screenshots/phase3-submit-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "cdf8816412bea70d0903ab30222e8fa9117aa0be4d5e92de249b3e62f38cb3a1"
+  },
+  {
+    "file": "screenshots/phase3-sticky-safe-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "934081e1c2671e9e70dbe58aef5611b240e524623f32038a054f48a247ab8ee8"
+  },
+  {
+    "file": "screenshots/plugin-blocks-390.png",
+    "width": 390,
+    "height": 2357,
+    "sha256": "14659af0a29653c6fb455122973b0043db0cebc53f0e687a5b8fa0561b0a6f7b"
+  },
+  {
+    "file": "screenshots/plugin-blocks-1440.png",
+    "width": 1440,
+    "height": 1621,
+    "sha256": "f1286b5a471f78e33219887b8ba5de48ef264db09b6130930d94a0434f5addd2"
+  },
+  {
+    "file": "screenshots/ux-product-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "6b852fd528f67cbd5bf0bb725a7a2d5a8670812ef438b9758f5ac593c19370ca"
+  },
+  {
+    "file": "screenshots/ux-cart-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "ec32dd1d2e8b3a418db161b89685a99e8fabf47129abfb312612b8b746fd3445"
+  }
+]

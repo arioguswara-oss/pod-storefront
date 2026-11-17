@@ -1,0 +1,15 @@
+test_archive_path_cannot_escape_output (test_build.PackageTests.test_archive_path_cannot_escape_output) ... ok
+test_independent_versioned_and_reproducible_packages (test_build.PackageTests.test_independent_versioned_and_reproducible_packages) ... ok
+test_missing_template_rejected (test_build.PackageTests.test_missing_template_rejected) ... ok
+test_symlinks_and_output_in_component_rejected (test_build.PackageTests.test_symlinks_and_output_in_component_rejected) ... ok
+test_theme_has_no_store_migrations_or_writes (test_build.PackageTests.test_theme_has_no_store_migrations_or_writes) ... ok
+test_version_mismatch_rejected (test_build.PackageTests.test_version_mismatch_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.126s
+
+OK
+Built /tmp/tmpe_hw22k8/output/pod-store-theme-0.1.0.zip (14 files; review-candidate)
+Built /tmp/tmpe_hw22k8/output/pod-simple-checkout-v1.2.0.zip (18 files; review-candidate)
+Built /tmp/tmpe_hw22k8/output/pod-store-theme-0.1.0.zip (14 files; review-candidate)
+Built /tmp/tmpe_hw22k8/output/pod-simple-checkout-v1.2.0.zip (18 files; review-candidate)

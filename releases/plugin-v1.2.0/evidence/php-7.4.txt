@@ -1,0 +1,10 @@
+PHP 7.4.33 (cli) (built: Nov 12 2022 09:17:36) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+No syntax errors detected in /src/includes/class-settings.php
+No syntax errors detected in /src/includes/class-us-checkout.php
+No syntax errors detected in /src/includes/class-cart.php
+No syntax errors detected in /src/includes/class-plugin.php
+No syntax errors detected in /src/includes/class-checkout.php
+No syntax errors detected in /src/includes/class-shopping-ux.php
+No syntax errors detected in /src/pod-simple-checkout.php

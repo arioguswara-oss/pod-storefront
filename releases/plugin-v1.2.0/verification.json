@@ -1,0 +1,57 @@
+{
+  "source_commit": "d9b924efad2ff5093a7b734ef92e77a7e8eeed57",
+  "baseline_commit": "db05fc192af4e2108fc44b7db93cea8fbd55ea3d",
+  "plugin_version": "1.2.0",
+  "runtime": {
+    "wordpress": "7.1.4",
+    "woocommerce": "11.3.0",
+    "php": "8.3.36",
+    "theme": "0.1.0",
+    "browser": "Chromium 156.0.8078.79"
+  },
+  "php_syntax": [
+    "7.4.33",
+    "8.3.36",
+    "8.4.27"
+  ],
+  "exact_checkout_viewports": [
+    [
+      320,
+      740
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "full_regression_exit_code": 0,
+  "final_zip_checkout_lifecycle_rollback_exit_code": 0,
+  "final_checkout_scenarios": 16,
+  "sticky_computed_style_probe": "passed",
+  "package": {
+    "file": "pod-simple-checkout-v1.2.0.zip",
+    "sha256": "40d54c71085cc24f051ffe28aa482d8c0620f0a97c70c7ad8ef5bd0e09232962",
+    "bytes": 45196,
+    "files": 18,
+    "single_root": "pod-simple-checkout/",
+    "crc": "passed",
+    "source_and_installed_file_match": "passed",
+    "deterministic_rebuild": "passed"
+  },
+  "ci_pass_claimed": false,
+  "ci_note": "Fresh Phase 3 CI status is reported on the separate PR; baseline account lock is not assumed to prove a new run result.",
+  "theme_changed": false,
+  "product_cart_sheet_runtime_changed": false,
+  "payment_gateways_modified": false,
+  "production_modified": false,
+  "synthetic_zero_total_orders_only": true,
+  "screenshot_count": 17
+}
