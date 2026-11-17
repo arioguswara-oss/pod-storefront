@@ -4,6 +4,21 @@
   const form = document.querySelector('.pod-sc-us form.checkout');
   if (!form || !form.querySelector('[name="pod_sc_us_form"]') || !window.jQuery) return;
   const $ = window.jQuery;
+  // Bind after core's ready callback so its gateway click handler runs first.
+  $(function () {
+    const config = window.podSCPayNow;
+    const label = () => {
+      const button = form.querySelector('#place_order');
+      const method = form.querySelector('input[name="payment_method"]:checked');
+      if (!button || button.childElementCount || !method || !config?.gateways?.includes(method.value) || $(method).data('order_button_text') || !button.getClientRects().length) return;
+      // Only native fallback copy; SDK/dynamic labels and every button attribute stay untouched.
+      const fallback = $(button).data('value');
+      if (fallback && button.textContent.trim() === String(fallback).trim()) button.textContent = config.text;
+    };
+    $(form).on('click.podScPayNow', 'input[name="payment_method"]', label);
+    $(document.body).on('payment_method_selected.podScPayNow updated_checkout.podScPayNow', label);
+    label();
+  });
   const names = ['first_name','last_name','company','country','address_1','address_2','city','state','postcode'];
   const same = form.querySelector('#pod-sc-same-address');
   let syncing = false, submitting = false;

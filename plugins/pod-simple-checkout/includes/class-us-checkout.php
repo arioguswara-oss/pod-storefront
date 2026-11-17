@@ -36,6 +36,18 @@ final class POD_SC_US_Checkout {
 		add_action( 'woocommerce_review_order_after_submit', static function () { if ( self::supported() ) { echo '</div>'; } }, -PHP_INT_MAX );
 	}
 
+	/** Presentation allowlist only; never edits a gateway, its label, or its settings. */
+	public static function pay_now_config() {
+		$ids = (array) apply_filters( 'pod_sc_pay_now_gateway_ids', array( 'paypal', 'ppcp-gateway', 'ppcp-credit-card-gateway', 'stripe', 'stripe_cc', 'woocommerce_payments' ) );
+		$eligible = array();
+		if ( WC()->cart && WC()->cart->needs_payment() ) {
+			foreach ( WC()->payment_gateways()->payment_gateways() as $gateway ) {
+				if ( in_array( $gateway->id, $ids, true ) && empty( $gateway->order_button_text ) && empty( $gateway->has_custom_place_order_button ) ) { $eligible[] = $gateway->id; }
+			}
+		}
+		return array( 'gateways' => $eligible, 'text' => __( 'Pay Now', 'pod-simple-checkout' ) );
+	}
+
 	private static function context() {
 		$endpoint = isset( $_GET['wc-ajax'] ) && is_scalar( $_GET['wc-ajax'] ) ? sanitize_key( wp_unslash( $_GET['wc-ajax'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- rendering selection only.
 		return POD_SC_Settings::enabled( 'checkout_ui' ) && 'classic' === POD_SC_Checkout::mode() && apply_filters( 'pod_sc_checkout_ui_supported', true ) && ( POD_SC_Checkout::enhanced() || in_array( $endpoint, array( 'checkout', 'update_order_review' ), true ) );

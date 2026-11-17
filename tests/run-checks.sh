@@ -21,6 +21,7 @@ node tests/ux-cart.cjs
 node tests/ux-edge.cjs
 node tests/phase3-browser.cjs
 node tests/phase3-sticky.cjs
+node tests/pay-now-browser.cjs
 node tests/plugin-lifecycle.cjs
 sh tests/rollback.sh
 git diff --check
