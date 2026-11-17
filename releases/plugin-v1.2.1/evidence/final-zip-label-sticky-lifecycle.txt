@@ -1,0 +1,11 @@
+PASS PayPal/card switch, repeated selection, AJAX and one native button 320x740
+PASS PayPal/card switch, repeated selection, AJAX and one native button 390x844
+PASS PayPal/card switch, repeated selection, AJAX and one native button 768x1024
+PASS PayPal/card switch, repeated selection, AJAX and one native button 1440x900
+PASS Mandatory PayPal text, gateway-managed dynamic text and custom SDK flag are preserved
+PASS Native terms/address/nonce validation still blocks orders; sticky falls back on error
+PASS No-JS/native layout/UI-off/Blocks/free checkout labels remain native
+PASS sticky activation, legal separation and focus fallback
+Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS
+Deactivate/reactivate without fatal errors or record changes: PASS
+Missing WooCommerce: inert frontend and clear administrator notice: PASS

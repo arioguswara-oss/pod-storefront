@@ -41,6 +41,7 @@ wp plugin install /tmp/pod-simple-checkout.zip --activate
 docker compose -f tests/compose.yml exec -T wordpress mkdir -p wp-content/mu-plugins
 docker cp tests/plugin-fixture-hooks.php "$container:/var/www/html/wp-content/mu-plugins/pod-fixture-hooks.php"
 docker cp tests/phase3-fixture-hooks.php "$container:/var/www/html/wp-content/mu-plugins/pod-phase3-fixture-hooks.php"
+docker cp tests/pay-now-fixture-hooks.php "$container:/var/www/html/wp-content/mu-plugins/pod-pay-now-fixture-hooks.php"
 wp eval-file /fixtures/snapshot.php > tests/results/after.json
 cmp tests/results/before.json tests/results/after.json
 wp core version > tests/results/wordpress-version.txt

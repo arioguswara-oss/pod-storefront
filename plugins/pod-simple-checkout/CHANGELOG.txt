@@ -1,3 +1,8 @@
+1.2.1 — Issue #7 native submit copy
+- Pay Now for allowlisted online gateways using the generic native submit label.
+- Preserve gateway-specific/dynamic/SDK labels, original button attributes and all processing.
+- No label changes for free orders, offline/unreviewed methods, Blocks, no-JS or native fallback.
+
 1.2.0 — Phase 3 Simple US Checkout
 - Email-first Classic cards; one native input per key and native validation.
 - Shipping-first core forms; optional verified same-address mapping with editable billing.

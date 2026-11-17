@@ -1,4 +1,4 @@
-POD Simple Checkout 1.2.0 — compatibility modes and limits
+POD Simple Checkout 1.2.1 — compatibility modes and limits
 
 NATIVE SIMPLE / VARIABLE PRODUCT FORMS
 
@@ -171,3 +171,24 @@ Opt out of Phase 3 while retaining the prior checkout presentation:
 add_filter('pod_sc_us_checkout_supported', '__return_false');
 Or disable Checkout UI in plugin settings to use unenhanced native checkout.
 Product and cart sheets do not depend on this Phase 3 adapter.
+
+ISSUE #7 — PAY NOW COPY (1.2.1)
+
+Progressive enhancement only in the supported US Classic layout. Native core
+selection/updated_checkout events run first; only unchanged generic fallback
+text on a plain-text button becomes Pay Now. Structured button markup stays native. The one native button ID/name/type/value/data-value and
+all processing/validation stay untouched. No new button or payment API exists.
+
+Default reviewed ID allowlist: paypal, ppcp-gateway, ppcp-credit-card-gateway,
+stripe, stripe_cc, woocommerce_payments. Gateway IDs are not inferred from display
+titles. Declared order_button_text or has_custom_place_order_button excludes the
+gateway; live native method metadata and non-default dynamic labels also win.
+An actual PayPal integration saying Continue/Proceed to PayPal retains that label.
+Unknown/offline methods, free orders, Blocks, native fallback and no-JS remain
+unchanged. No timers, observers or repeated SDK label rewrites are used.
+
+Use pod_sc_pay_now_gateway_ids to narrow/disable this presentation allowlist, or
+to opt in an additional ID only after review of its actual semantics/SDK. The
+fixture tests PayPal/card native contracts, not real provider SDKs/transactions.
+Merchant gateway IDs and any authorization/redirect-specific copy need owner
+acceptance before activation. No gateway settings are changed by this plugin.

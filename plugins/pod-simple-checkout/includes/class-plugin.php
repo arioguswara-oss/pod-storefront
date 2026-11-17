@@ -64,7 +64,7 @@ final class POD_SC_Plugin {
 		}
 		if ( POD_SC_Checkout::enhanced() ) {
 			wp_enqueue_style( 'pod-simple-checkout-ui', POD_SC_URL . 'assets/checkout.css', array(), POD_SC_VERSION );
-			if ( POD_SC_US_Checkout::supported() ) { wp_enqueue_script( 'pod-sc-us-checkout', POD_SC_URL . 'assets/checkout.js', array( 'jquery', 'wc-checkout' ), POD_SC_VERSION, true ); }
+			if ( POD_SC_US_Checkout::supported() ) { wp_enqueue_script( 'pod-sc-us-checkout', POD_SC_URL . 'assets/checkout.js', array( 'jquery', 'wc-checkout' ), POD_SC_VERSION, true ); wp_localize_script( 'pod-sc-us-checkout', 'podSCPayNow', POD_SC_US_Checkout::pay_now_config() ); }
 		}
 	}
 

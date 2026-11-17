@@ -1,0 +1,38 @@
+[
+  {
+    "name": "cart sheet 320x740: empty, add, update, persistence, remove, keyboard",
+    "status": "passed"
+  },
+  {
+    "name": "cart sheet 390x844: empty, add, update, persistence, remove, keyboard",
+    "status": "passed"
+  },
+  {
+    "name": "cart sheet 768x1024: empty, add, update, persistence, remove, keyboard",
+    "status": "passed"
+  },
+  {
+    "name": "cart sheet 1440x900: empty, add, update, persistence, remove, keyboard",
+    "status": "passed"
+  },
+  {
+    "name": "rapid gestures and lost response retry change exactly once",
+    "status": "passed"
+  },
+  {
+    "name": "Slow in-flight write cannot be dismissed or accidentally submitted twice",
+    "status": "passed"
+  },
+  {
+    "name": "unavailable GET + network retry + disabled AJAX/JS keep canonical URLs",
+    "status": "passed"
+  },
+  {
+    "name": "sheet Buy Now preserves existing buyer items even if legacy replacement option is enabled",
+    "status": "passed"
+  },
+  {
+    "name": "canonical Classic Cart cards preserve native coupons, shipping, totals and update",
+    "status": "passed"
+  }
+]

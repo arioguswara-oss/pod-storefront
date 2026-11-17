@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Simple addition, native mini-cart fragments and exact count",
+    "status": "passed"
+  },
+  {
+    "name": "Replay and concurrent identical requests add exactly once",
+    "status": "passed"
+  },
+  {
+    "name": "Invalid nonce/session token/identifier cannot reach the native handler",
+    "status": "passed"
+  },
+  {
+    "name": "Variable product requires matching size/color and valid variation",
+    "status": "passed"
+  },
+  {
+    "name": "Unavailable stock, quantity limits and sold-individually products",
+    "status": "passed"
+  },
+  {
+    "name": "Extension validation rejects both intents without cart loss",
+    "status": "passed"
+  },
+  {
+    "name": "Buy Now preserves existing cart and only its intent skips cart",
+    "status": "passed"
+  },
+  {
+    "name": "Replacement is opt-in, Buy Now only, and invalid input preserves cart",
+    "status": "passed"
+  },
+  {
+    "name": "Feature flags enforce disabled Buy Now/AJAX/direct-checkout behavior",
+    "status": "passed"
+  },
+  {
+    "name": "Replacement can reduce a stock-limit quantity and rolls back failed candidate validation",
+    "status": "passed"
+  },
+  {
+    "name": "WooCommerce native cart redirect preference remains respected",
+    "status": "passed"
+  },
+  {
+    "name": "Settings sanitization permits known booleans only and preserves safe defaults",
+    "status": "passed"
+  }
+]

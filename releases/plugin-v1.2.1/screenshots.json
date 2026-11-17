@@ -1,0 +1,50 @@
+[
+  {
+    "file": "screenshots/pay-now-paypal-320.png",
+    "width": 320,
+    "height": 740,
+    "sha256": "8324a89529533603b7d739985004705a4a2192419f8e551e76bfe1e281b5e311"
+  },
+  {
+    "file": "screenshots/pay-now-paypal-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "a7a05cca8d30dee70c68a0cc1219450a067098bf7f1879af0b30fa2b71cb347b"
+  },
+  {
+    "file": "screenshots/pay-now-paypal-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "63838f428e924f09e87417b241c064fc16f705c0f7d093137411ef6e8afbb6f4"
+  },
+  {
+    "file": "screenshots/pay-now-paypal-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "841c7371085ab42d89223d1c5369b2942176b3c7dfa59df6d71b9c9cf47569b3"
+  },
+  {
+    "file": "screenshots/pay-now-stripe-320.png",
+    "width": 320,
+    "height": 740,
+    "sha256": "bb20e2b06399598ea34ef1c4cffa81473cc8796e4682fc3ad5a3996f84238a53"
+  },
+  {
+    "file": "screenshots/pay-now-stripe-390.png",
+    "width": 390,
+    "height": 844,
+    "sha256": "84801af665f86852157d6f37c861db8ffb383a9ef6122808bb349759b8073f26"
+  },
+  {
+    "file": "screenshots/pay-now-stripe-768.png",
+    "width": 768,
+    "height": 1024,
+    "sha256": "d0f310dd9dc096fd57e084bb189f5452b0d0619e5a7a5f70733cf7b7c7ca6ab2"
+  },
+  {
+    "file": "screenshots/pay-now-stripe-1440.png",
+    "width": 1440,
+    "height": 900,
+    "sha256": "649609ff40e37cf254d8fa4658bbf18747b3d4ee1887e7c942c2b3ede29b1898"
+  }
+]

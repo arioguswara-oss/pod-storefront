@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Session/nonce protection and native add-handler injection guard on every new route",
+    "status": "passed"
+  },
+  {
+    "name": "Absolute quantity, native totals/fragments, purchase limits and no fractional truncation",
+    "status": "passed"
+  },
+  {
+    "name": "Quantity/remove deduplication, conflict detection and stale replay cannot overwrite newer state",
+    "status": "passed"
+  },
+  {
+    "name": "Fresh bag counts are isolated between guest sessions and cross-session keys cannot mutate others",
+    "status": "passed"
+  },
+  {
+    "name": "Concurrent bag commands have at most one writer and maintain saved session consistency",
+    "status": "passed"
+  },
+  {
+    "name": "Stock changed after selection is rejected without changing buyer quantity",
+    "status": "passed"
+  }
+]
