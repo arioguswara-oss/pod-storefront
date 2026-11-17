@@ -1,0 +1,17 @@
+PHP 7.4.33 (cli) (built: Nov 12 2022 09:17:36) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-settings.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-us-checkout.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-cart.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-plugin.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-checkout.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/includes/class-shopping-ux.php
+No syntax errors detected in /src/plugins/pod-simple-checkout/pod-simple-checkout.php
+No syntax errors detected in /src/tests/phase3-fixture-hooks.php
+No syntax errors detected in /src/tests/fixture.php
+No syntax errors detected in /src/tests/plugin-fixture.php
+No syntax errors detected in /src/tests/router.php
+No syntax errors detected in /src/tests/plugin-fixture-hooks.php
+No syntax errors detected in /src/tests/snapshot.php
+No syntax errors detected in /src/tests/pay-now-fixture-hooks.php

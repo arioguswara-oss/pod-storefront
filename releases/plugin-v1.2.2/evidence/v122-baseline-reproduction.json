@@ -1,0 +1,25 @@
+{
+  "config": {
+    "gateways": [],
+    "text": "Pay Now"
+  },
+  "script": "http://127.0.0.1:8889/wp-content/plugins/pod-simple-checkout/assets/checkout.js?ver=1.2.1",
+  "executed": true,
+  "methods": [
+    {
+      "id": "vccp-gateway-paypal",
+      "label": "Place order",
+      "custom": "",
+      "value": "Place order"
+    },
+    {
+      "id": "vccp-gateway-banxa",
+      "label": "Place order",
+      "custom": "",
+      "value": "Place order"
+    }
+  ],
+  "http_status": [
+    200
+  ]
+}
