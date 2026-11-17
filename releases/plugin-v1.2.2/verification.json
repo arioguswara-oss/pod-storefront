@@ -1,0 +1,40 @@
+{
+  "issue": 9,
+  "baseline_commit": "29d45b09c4eb01ba3e21c53b68e1883307d19bba",
+  "source_commit": "19185701e5f0ae5ae7839523eaa4cb7bfc61e33c",
+  "version": "1.2.2",
+  "runtime": {
+    "wordpress": "7.1.4",
+    "woocommerce": "11.3.0",
+    "php": "8.3.36",
+    "plugin": "1.2.2",
+    "browser": "Chromium 156.0.8078.79"
+  },
+  "full_regression_exit_code": 0,
+  "legacy_label_scenarios": 7,
+  "exact_vccp_label_scenarios": 8,
+  "screenshots": 8,
+  "package": {
+    "component": "plugin",
+    "file": "pod-simple-checkout-v1.2.2.zip",
+    "version": "1.2.2",
+    "status": "review-candidate",
+    "sha256": "5e7e81b2aa79a62c01cd7ddb310025e6b954d6042c0b89750adc2f1ee0e2c56c",
+    "files": 18,
+    "bytes": 46979,
+    "crc": "passed",
+    "single_root": "pod-simple-checkout/",
+    "deterministic_rebuild": "passed",
+    "source_installed_archive_match": "passed",
+    "headers_constant_readme_manifest": "1.2.2"
+  },
+  "native_button_attributes_and_nonce": "preserved",
+  "custom_dynamic_sdk_and_structured_buttons": "preserved",
+  "enqueue_and_checkout_js_changed": false,
+  "classic_configuration_loaded_and_executed": "Verified baseline at 390x844; patched checkout at all four exact viewports",
+  "real_gateway_sdk_or_payment_tested": false,
+  "theme_changed": false,
+  "production_modified": false,
+  "ci_pass_claimed": false,
+  "ci_note": "Fresh PR run status/evidence is recorded separately on the PR."
+}

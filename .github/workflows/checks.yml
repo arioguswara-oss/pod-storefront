@@ -76,8 +76,10 @@ jobs:
         run: |
           node tests/phase3-browser.cjs
           node tests/phase3-sticky.cjs
-      - name: Issue 7 native Pay Now copy and gateway label preservation
-        run: node tests/pay-now-browser.cjs
+      - name: Issues 7 and 9 native Pay Now copy and gateway label preservation
+        run: |
+          node tests/pay-now-browser.cjs
+          POD_LABEL_GATEWAYS=vccp node tests/pay-now-browser.cjs
       - name: Plugin lifecycle and existing-record preservation
         run: node tests/plugin-lifecycle.cjs
       - name: Rollback and standalone theme checks

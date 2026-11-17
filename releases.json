@@ -6,8 +6,8 @@
   },
   "plugin": {
     "slug": "pod-simple-checkout",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "status": "review-candidate",
-    "archive_name": "pod-simple-checkout-v1.2.1.zip"
+    "archive_name": "pod-simple-checkout-v1.2.2.zip"
   }
 }

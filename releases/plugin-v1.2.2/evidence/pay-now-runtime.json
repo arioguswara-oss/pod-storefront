@@ -1,0 +1,62 @@
+[
+  {
+    "viewport": [
+      320,
+      740
+    ],
+    "config_present": true,
+    "gateways": [
+      "paypal",
+      "stripe"
+    ],
+    "script_src": "http://127.0.0.1:8889/wp-content/plugins/pod-simple-checkout/assets/checkout.js?ver=1.2.2",
+    "config_before_script": true,
+    "script_executed": true,
+    "http_status": 200
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "config_present": true,
+    "gateways": [
+      "paypal",
+      "stripe"
+    ],
+    "script_src": "http://127.0.0.1:8889/wp-content/plugins/pod-simple-checkout/assets/checkout.js?ver=1.2.2",
+    "config_before_script": true,
+    "script_executed": true,
+    "http_status": 200
+  },
+  {
+    "viewport": [
+      768,
+      1024
+    ],
+    "config_present": true,
+    "gateways": [
+      "paypal",
+      "stripe"
+    ],
+    "script_src": "http://127.0.0.1:8889/wp-content/plugins/pod-simple-checkout/assets/checkout.js?ver=1.2.2",
+    "config_before_script": true,
+    "script_executed": true,
+    "http_status": 200
+  },
+  {
+    "viewport": [
+      1440,
+      900
+    ],
+    "config_present": true,
+    "gateways": [
+      "paypal",
+      "stripe"
+    ],
+    "script_src": "http://127.0.0.1:8889/wp-content/plugins/pod-simple-checkout/assets/checkout.js?ver=1.2.2",
+    "config_before_script": true,
+    "script_executed": true,
+    "http_status": 200
+  }
+]

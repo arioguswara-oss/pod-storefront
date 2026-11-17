@@ -1,7 +1,7 @@
 === POD Simple Checkout ===
 Requires at least: 7.0
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires Plugins: woocommerce
 WC requires at least: 11.3
 WC tested up to: 11.3
@@ -38,7 +38,7 @@ on the target WordPress installation.
 1. Read INSTALLATION.txt, COMPATIBILITY.txt and SECURITY.txt first.
 2. Back up files/database and retain the prior plugin ZIP. Record current cart,
    checkout page/type, shipping/tax display and gateway behavior.
-3. Upload pod-simple-checkout-v1.2.1.zip via Plugins > Add New > Upload Plugin.
+3. Upload pod-simple-checkout-v1.2.2.zip via Plugins > Add New > Upload Plugin.
 4. Activate ONLY after the owner explicitly approves the exact live operation.
 5. Open WooCommerce > POD Simple Checkout and review the defaults.
 
@@ -94,6 +94,10 @@ retained for reactivation; no uninstall data deletion or migration is performed.
 Never restore a database over new orders as a routine plugin rollback.
 
 == Changelog ==
+
+= 1.2.2 =
+Issue #9: opt in vccp-gateway-paypal and vccp-gateway-banxa for Pay Now when
+the native fallback is generic. Custom/SDK labels and native processing stay intact.
 
 = 1.2.1 =
 Issue #7: eligible native Classic checkout fallback text becomes Pay Now.

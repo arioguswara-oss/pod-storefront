@@ -22,6 +22,7 @@ node tests/ux-edge.cjs
 node tests/phase3-browser.cjs
 node tests/phase3-sticky.cjs
 node tests/pay-now-browser.cjs
+POD_LABEL_GATEWAYS=vccp node tests/pay-now-browser.cjs
 node tests/plugin-lifecycle.cjs
 sh tests/rollback.sh
 git diff --check

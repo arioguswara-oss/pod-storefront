@@ -1,4 +1,4 @@
-POD Simple Checkout 1.2.1 — installation, acceptance and rollback
+POD Simple Checkout 1.2.2 — installation, acceptance and rollback
 
 BEFORE LIVE ACTIVATION
 
@@ -19,7 +19,7 @@ website; do not create or require an extra hosted staging site.
 
 INSTALL AND CONFIGURE (AFTER APPROVAL)
 
-Upload pod-simple-checkout-v1.2.1.zip in WordPress Admin > Plugins > Add New >
+Upload pod-simple-checkout-v1.2.2.zip in WordPress Admin > Plugins > Add New >
 Upload Plugin. If upgrading the prior plugin, use WordPress's normal replacement
 confirmation after backup. Activate the plugin. No CLI, npm or Composer is needed.
 
@@ -108,3 +108,11 @@ Retain v1.2.0 ZIP and verified backup before owner-approved replacement. This
 patch only enhances visible submit copy for eligible generic native labels.
 No settings or schema migration. Roll back by reinstalling v1.2.0; do not
 restore an old DB over new orders. Gateway-specific and SDK labels remain native.
+
+PATCH UPGRADE FROM 1.2.1
+Retain pod-simple-checkout-v1.2.1.zip and verified files/database backups before
+owner-approved replacement with v1.2.2. No settings/schema changes occur. This
+patch adds two reviewed IDs to the generic-label allowlist only. Confirm both
+actual methods, switching and checkout refresh retain any gateway-specific or
+SDK-controlled button. No payment test is authorized. Roll back by reinstalling
+v1.2.1; do not restore an old database over newer orders.

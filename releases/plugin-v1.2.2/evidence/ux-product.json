@@ -1,0 +1,18 @@
+[
+  {
+    "viewport": "320x740",
+    "status": "passed"
+  },
+  {
+    "viewport": "390x844",
+    "status": "passed"
+  },
+  {
+    "viewport": "768x1024",
+    "status": "passed"
+  },
+  {
+    "viewport": "1440x900",
+    "status": "passed"
+  }
+]

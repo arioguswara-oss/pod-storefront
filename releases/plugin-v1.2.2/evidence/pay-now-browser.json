@@ -1,0 +1,30 @@
+[
+  {
+    "name": "PayPal/card switch, repeated selection, AJAX and one native button 320x740",
+    "status": "passed"
+  },
+  {
+    "name": "PayPal/card switch, repeated selection, AJAX and one native button 390x844",
+    "status": "passed"
+  },
+  {
+    "name": "PayPal/card switch, repeated selection, AJAX and one native button 768x1024",
+    "status": "passed"
+  },
+  {
+    "name": "PayPal/card switch, repeated selection, AJAX and one native button 1440x900",
+    "status": "passed"
+  },
+  {
+    "name": "Mandatory PayPal text, gateway-managed dynamic text and custom SDK flag are preserved",
+    "status": "passed"
+  },
+  {
+    "name": "Native terms/address/nonce validation still blocks orders; sticky falls back on error",
+    "status": "passed"
+  },
+  {
+    "name": "No-JS/native layout/UI-off/Blocks/free checkout labels remain native",
+    "status": "passed"
+  }
+]
