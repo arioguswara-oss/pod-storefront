@@ -5,7 +5,7 @@
 - Inspeksi publik baca-saja diperbolehkan. Upload, aktivasi, konfigurasi, pengujian yang menulis cart/order, dan perubahan lain pada website live memerlukan otorisasi eksplisit pengguna. Jangan mengakses database produksi tanpa otorisasi.
 - Buat perubahan melalui branch dan pull request; jangan merge otomatis.
 - Gunakan hanya GitHub untuk source, review, dan artefak rilis (Releases, Actions Artifacts, atau folder paket review versi di repository). Jangan mengunggah paket proyek ke Google Drive atau layanan lain.
-- Prioritas saat ini Issue #4 Phase 1–2, UX v0.2.0 di branch codex/zet-style-shopping-ux-v0.2.0 dari plugin v1.0.0. Paket plugin bertambah menjadi v1.1.0; Phase 3 checkout menunggu checkpoint review berikutnya. Theme sudah aktif dan ditinjau pengguna; jangan mengubah berkas theme. Implementasikan shopping flow melalui API WooCommerce tanpa mengubah gateway, webhook pembayaran, atau data produksi.
+- Prioritas saat ini Phase 3 Simple US Checkout di branch baru dari baseline codex/zet-style-shopping-ux-v0.2.0 yang sudah direview (plugin v1.1.0). Paket baru v1.2.0; PR #5 tidak diubah. Theme sudah aktif dan ditinjau pengguna; jangan mengubah berkas theme. Implementasikan shopping flow melalui API WooCommerce tanpa mengubah gateway, webhook pembayaran, atau data produksi.
 - Theme berada di `themes/pod-store-theme`; plugin di `plugins/pod-simple-checkout`.
 - Hindari menyalin template WooCommerce sebelum benar-benar diperlukan.
 - Bangun kedua paket dengan `python3 scripts/build.py`. Jangan commit hasil `dist/` atau kredensial.

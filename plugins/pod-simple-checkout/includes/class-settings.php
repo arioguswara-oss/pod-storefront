@@ -50,7 +50,7 @@ final class POD_SC_Settings {
 		?>
 		<div class="wrap"><h1><?php esc_html_e( 'POD Simple Checkout', 'pod-simple-checkout' ); ?></h1>
 		<p><?php echo esc_html( sprintf( __( 'Version %1$s · Detected checkout: %2$s', 'pod-simple-checkout' ), POD_SC_VERSION, POD_SC_Checkout::mode() ) ); ?></p>
-		<p><?php esc_html_e( 'Classic Checkout gets a two-column native form and image summary. Checkout Blocks keep their native controls with scoped styling. No checkout page, fields, gateways or cache settings are replaced.', 'pod-simple-checkout' ); ?></p>
+		<p><?php esc_html_e( 'Compatible Classic Checkout uses email-first cards, native shipping/address forms and one native Place Order. Unsupported templates/addon fields retain the previous native layout; Checkout Blocks keep their own controls. No gateway or store/cache configuration is changed.', 'pod-simple-checkout' ); ?></p>
 		<?php if ( 'unknown' === POD_SC_Checkout::mode() ) : ?><div class="notice notice-warning inline"><p><?php esc_html_e( 'Checkout type could not be recognized. Presentation enhancements are disabled; Buy Now still uses the configured WooCommerce checkout URL. Check your page builder compatibility.', 'pod-simple-checkout' ); ?></p></div><?php endif; ?>
 		<?php settings_errors(); ?>
 		<form action="options.php" method="post">

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: POD Simple Checkout
  * Description: Buy Now, progressive AJAX cart and a clean native WooCommerce checkout. No gateway changes.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Requires at least: 7.0
  * Requires PHP: 7.4
  * Requires Plugins: woocommerce
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'POD_SC_VERSION', '1.1.0' );
+define( 'POD_SC_VERSION', '1.2.0' );
 define( 'POD_SC_FILE', __FILE__ );
 define( 'POD_SC_PATH', plugin_dir_path( __FILE__ ) );
 define( 'POD_SC_URL', plugin_dir_url( __FILE__ ) );
@@ -30,5 +30,6 @@ require_once POD_SC_PATH . 'includes/class-settings.php';
 require_once POD_SC_PATH . 'includes/class-cart.php';
 require_once POD_SC_PATH . 'includes/class-checkout.php';
 require_once POD_SC_PATH . 'includes/class-shopping-ux.php';
+require_once POD_SC_PATH . 'includes/class-us-checkout.php';
 require_once POD_SC_PATH . 'includes/class-plugin.php';
 add_action( 'plugins_loaded', array( 'POD_SC_Plugin', 'boot' ), 20 );

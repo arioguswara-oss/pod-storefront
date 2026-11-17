@@ -1,0 +1,12 @@
+PHP 8.4.27 (cli) (built: Nov  5 2026 19:01:47) (NTS)
+Copyright (c) The PHP Group
+Built by https://github.com/docker-library/php
+Zend Engine v4.4.27, Copyright (c) Zend Technologies
+    with Zend OPcache v8.4.27, Copyright (c), by Zend Technologies
+No syntax errors detected in /src/includes/class-settings.php
+No syntax errors detected in /src/includes/class-us-checkout.php
+No syntax errors detected in /src/includes/class-cart.php
+No syntax errors detected in /src/includes/class-plugin.php
+No syntax errors detected in /src/includes/class-checkout.php
+No syntax errors detected in /src/includes/class-shopping-ux.php
+No syntax errors detected in /src/pod-simple-checkout.php

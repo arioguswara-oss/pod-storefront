@@ -1,4 +1,4 @@
-POD Simple Checkout 1.1.0 — compatibility modes and limits
+POD Simple Checkout 1.2.0 — compatibility modes and limits
 
 NATIVE SIMPLE / VARIABLE PRODUCT FORMS
 
@@ -27,8 +27,8 @@ field preservation and validation hooks do not certify every extension.
 CLASSIC CHECKOUT
 
 The configured page contains [woocommerce_checkout]. The native WooCommerce
-template remains in use. No fields are removed, made optional, reordered or
-renamed. Wrappers around native hooks and a checkout-only item-name filter add
+template remains in use. No field keys are removed or renamed and requiredness is preserved. Compatible
+Phase 3 address fields receive presentation priorities; fallback stays native. Wrappers around native hooks and a checkout-only item-name filter add
 layout and thumbnails. Core summary subtotal/discount/shipping/tax/total, payment
 and Place Order remain native. Guest/account requirements are honored.
 
@@ -126,5 +126,48 @@ add_filter('pod_sc_sheet_product_supported', function ($ok, $product) {
 
 Tested runtime locally: WordPress 7.1.4, WooCommerce 11.3.0, PHP 8.3, Chromium.
 No claim of production LiteSpeed/CDN, real gateway, third-party addon, Safari
-or Firefox certification. Phase 3 US checkout redesign is not included; the
-existing Classic/Blocks compatibility modes and payment area remain intact.
+or Firefox certification. Phase 3 Classic layout is described below; Blocks and payment processing remain native.
+
+PHASE 3 CLASSIC ADDRESS/PRESENTATION MODE
+
+Compatible unmodified core form-checkout/form-billing/form-shipping/review-order
+templates receive Contact, Shipping Address, native rates, Your Order and native
+payment/submit. No WooCommerce template is copied. Only core's shipping-form
+renderer moves ahead of core billing renderer; top-level billing/shipping and
+before/after form hooks remain registered and run once. Addons requiring the old
+DOM location should opt out. Email remains in the native billing schema and is
+rendered once in Contact; only its duplicate billing render is suppressed.
+
+Known core field keys (including native shipping_phone) are supported. Unknown
+billing/shipping/order fields, mandatory order notes, template overrides and
+shipping-to-billing-only settings retain the original checkout layout. Required
+phone and every schema field remain intact. Virtual carts use native billing
+and omit shipping only when WooCommerce does. Saved different addresses are not
+automatically merged. Same-address is off without JavaScript so both addresses
+remain editable; the core shipping flag keeps its original meaning.
+
+When checked, declared native name/address/company fields mirror shipping to
+billing. Contact email/phone, account/consent and payment fields are never copied.
+The native update_order_review nonce is checked by core before the address hook;
+an additional form nonce gates this adapter. Final native checkout nonce, field
+validation, session update and order pipeline remain authoritative. If a form is
+stale or compatibility changes, checkout fails visibly and asks for reload; no
+required field is silently skipped. No new address/session/order engine exists.
+
+Shipping rows are rendered once by the original native order-review template.
+Its shipping hooks capture only the native rate rows, which become a separate
+WooCommerce AJAX fragment. The order summary retains a native shipping amount;
+rate inputs/IDs are not cloned. Payment HTML, gateway scripts/iframes and native
+checkout/order processing are not replaced. Third-party shipping widgets/hooks
+requiring rates inside the original review table need opt-out verification.
+
+The one core Place Order element remains inside its native payment/form
+container. Its total comes from WooCommerce. Sticky placement is progressive:
+small/zoomed/keyboard viewports, focused fields, payment iframes, processing,
+errors or possible overlap with methods/legal text use normal native placement.
+Native gateway scripts may have additional constraints: verify the actual stack.
+
+Opt out of Phase 3 while retaining the prior checkout presentation:
+add_filter('pod_sc_us_checkout_supported', '__return_false');
+Or disable Checkout UI in plugin settings to use unenhanced native checkout.
+Product and cart sheets do not depend on this Phase 3 adapter.

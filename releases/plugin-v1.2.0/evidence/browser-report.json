@@ -1,0 +1,29 @@
+{
+  "checks": [
+    "home 320px: PASS",
+    "category 320px: PASS",
+    "product 320px: PASS",
+    "Variable product: add/quantity/persist/remove/header count 320px: PASS",
+    "Product search 320px: PASS",
+    "Native AJAX add + Cart Block quantity/persist/remove 320px: PASS",
+    "home 390px: PASS",
+    "category 390px: PASS",
+    "product 390px: PASS",
+    "Variable product: add/quantity/persist/remove/header count 390px: PASS",
+    "Product search 390px: PASS",
+    "Native AJAX add + Cart Block quantity/persist/remove 390px: PASS",
+    "home 768px: PASS",
+    "category 768px: PASS",
+    "product 768px: PASS",
+    "Variable product: add/quantity/persist/remove/header count 768px: PASS",
+    "Product search 768px: PASS",
+    "Native AJAX add + Cart Block quantity/persist/remove 768px: PASS",
+    "home 1440px: PASS",
+    "category 1440px: PASS",
+    "product 1440px: PASS",
+    "Variable product: add/quantity/persist/remove/header count 1440px: PASS",
+    "Product search 1440px: PASS",
+    "Native AJAX add + Cart Block quantity/persist/remove 1440px: PASS"
+  ],
+  "errors": []
+}

@@ -17,6 +17,7 @@ final class POD_SC_Plugin {
 		add_action( 'template_redirect', array( __CLASS__, 'dynamic_headers' ), 1 );
 		POD_SC_Cart::register();
 		POD_SC_Checkout::register();
+		POD_SC_US_Checkout::register();
 		POD_SC_Shopping_UX::register();
 	}
 
@@ -63,6 +64,7 @@ final class POD_SC_Plugin {
 		}
 		if ( POD_SC_Checkout::enhanced() ) {
 			wp_enqueue_style( 'pod-simple-checkout-ui', POD_SC_URL . 'assets/checkout.css', array(), POD_SC_VERSION );
+			if ( POD_SC_US_Checkout::supported() ) { wp_enqueue_script( 'pod-sc-us-checkout', POD_SC_URL . 'assets/checkout.js', array( 'jquery', 'wc-checkout' ), POD_SC_VERSION, true ); }
 		}
 	}
 

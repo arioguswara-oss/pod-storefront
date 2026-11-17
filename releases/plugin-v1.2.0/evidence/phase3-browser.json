@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Simple US Checkout 320x740: DOM, addresses, native rates/tax/coupon, keyboard, sticky",
+    "status": "passed"
+  },
+  {
+    "name": "Simple US Checkout 390x844: DOM, addresses, native rates/tax/coupon, keyboard, sticky",
+    "status": "passed"
+  },
+  {
+    "name": "Simple US Checkout 768x1024: DOM, addresses, native rates/tax/coupon, keyboard, sticky",
+    "status": "passed"
+  },
+  {
+    "name": "Simple US Checkout 1440x900: DOM, addresses, native rates/tax/coupon, keyboard, sticky",
+    "status": "passed"
+  },
+  {
+    "name": "Server validates invalid email/state/ZIP and required terms; no order created",
+    "status": "passed"
+  },
+  {
+    "name": "Server maps same-address data independently of JS, enforces real shipping fields and addon fallback",
+    "status": "passed"
+  },
+  {
+    "name": "Synthetic native gateway markup/iframe untouched; focus/errors/iframe use safe submit fallback",
+    "status": "passed"
+  },
+  {
+    "name": "Native multiple shipping packages and fee totals; no duplicate rate IDs",
+    "status": "passed"
+  },
+  {
+    "name": "Blocks/UI-off/native compatibility modes preserve original controls",
+    "status": "passed"
+  },
+  {
+    "name": "Saved differing billing/shipping stays editable; supported non-US choices are not overwritten",
+    "status": "passed"
+  },
+  {
+    "name": "No JavaScript keeps both native addresses editable; shipping-to-billing-only falls back",
+    "status": "passed"
+  },
+  {
+    "name": "Physical zero-total native order: server maps addresses, core prevents duplicate submit, hooks preserved",
+    "status": "passed"
+  },
+  {
+    "name": "Billing- and shipping-based taxes, mixed carts and tampered adapter nonce remain native",
+    "status": "passed"
+  },
+  {
+    "name": "Native network failure and narrow/zoomed keyboard viewport leave one reachable nonsticky submit",
+    "status": "passed"
+  },
+  {
+    "name": "Native address field processing filters run once per field",
+    "status": "passed"
+  },
+  {
+    "name": "Native virtual zero-value order and guest/account constraints still work",
+    "status": "passed"
+  }
+]

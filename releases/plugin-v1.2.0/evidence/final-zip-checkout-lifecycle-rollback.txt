@@ -1,0 +1,27 @@
+PASS Simple US Checkout 320x740: DOM, addresses, native rates/tax/coupon, keyboard, sticky
+PASS Simple US Checkout 390x844: DOM, addresses, native rates/tax/coupon, keyboard, sticky
+PASS Simple US Checkout 768x1024: DOM, addresses, native rates/tax/coupon, keyboard, sticky
+PASS Simple US Checkout 1440x900: DOM, addresses, native rates/tax/coupon, keyboard, sticky
+PASS Server validates invalid email/state/ZIP and required terms; no order created
+PASS Server maps same-address data independently of JS, enforces real shipping fields and addon fallback
+PASS Synthetic native gateway markup/iframe untouched; focus/errors/iframe use safe submit fallback
+PASS Native multiple shipping packages and fee totals; no duplicate rate IDs
+PASS Blocks/UI-off/native compatibility modes preserve original controls
+PASS Saved differing billing/shipping stays editable; supported non-US choices are not overwritten
+PASS No JavaScript keeps both native addresses editable; shipping-to-billing-only falls back
+PASS Physical zero-total native order: server maps addresses, core prevents duplicate submit, hooks preserved
+PASS Billing- and shipping-based taxes, mixed carts and tampered adapter nonce remain native
+PASS Native network failure and narrow/zoomed keyboard viewport leave one reachable nonsticky submit
+PASS Native address field processing filters run once per field
+PASS Native virtual zero-value order and guest/account constraints still work
+Existing catalog, variations, images, URLs, original orders, homepage and recorded settings: PASS
+Deactivate/reactivate without fatal errors or record changes: PASS
+Missing WooCommerce: inert frontend and clear administrator notice: PASS
+Success: Switched to 'Twenty Twenty-Five' theme.
+Success: Switched to 'POD Store Theme' theme.
+Plugin 'pod-simple-checkout' deactivated.
+Plugin 'woocommerce' deactivated.
+Success: Deactivated 2 of 2 plugins.
+Plugin 'woocommerce' activated.
+Plugin 'pod-simple-checkout' activated.
+Success: Activated 2 of 2 plugins.

@@ -28,6 +28,7 @@ jobs:
           node --check themes/pod-store-theme/assets/js/navigation.js
           node --check plugins/pod-simple-checkout/assets/product.js
           node --check plugins/pod-simple-checkout/assets/shopping.js
+          node --check plugins/pod-simple-checkout/assets/checkout.js
       - name: Package tests and build
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py' -v
@@ -71,6 +72,10 @@ jobs:
           node tests/ux-product.cjs
           node tests/ux-cart.cjs
           node tests/ux-edge.cjs
+      - name: Phase 3 native US Classic Checkout contracts
+        run: |
+          node tests/phase3-browser.cjs
+          node tests/phase3-sticky.cjs
       - name: Plugin lifecycle and existing-record preservation
         run: node tests/plugin-lifecycle.cjs
       - name: Rollback and standalone theme checks
