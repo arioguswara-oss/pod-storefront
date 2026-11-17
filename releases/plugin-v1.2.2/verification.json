@@ -31,7 +31,7 @@
   "native_button_attributes_and_nonce": "preserved",
   "custom_dynamic_sdk_and_structured_buttons": "preserved",
   "enqueue_and_checkout_js_changed": false,
-  "classic_configuration_loaded_and_executed": "verified locally in four exact viewports before/after missing-ID fix",
+  "classic_configuration_loaded_and_executed": "Verified baseline at 390x844; patched checkout at all four exact viewports",
   "real_gateway_sdk_or_payment_tested": false,
   "theme_changed": false,
   "production_modified": false,
