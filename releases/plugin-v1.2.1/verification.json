@@ -1,0 +1,57 @@
+{
+  "issue": 7,
+  "source_commit": "e388f92d2f13b207c8d21dec07d766388981c459",
+  "baseline_commit": "2d3f5fcfe35c118074ca20e9040585f15bffe466",
+  "version": "1.2.1",
+  "runtime": {
+    "wordpress": "7.1.4",
+    "woocommerce": "11.3.0",
+    "php": "8.3.36",
+    "browser": "Chromium 156.0.8078.79"
+  },
+  "full_regression_exit_code": 0,
+  "final_zip_targeted_exit_code": 0,
+  "label_scenarios": 7,
+  "viewports": [
+    [
+      320,
+      740
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      1440,
+      900
+    ]
+  ],
+  "package": {
+    "file": "pod-simple-checkout-v1.2.1.zip",
+    "sha256": "637df4dd8fe60c81bcb632d8604779a86977fe6292c6f3d8e13f5cdb196cd827",
+    "bytes": 46722,
+    "files": 18,
+    "crc": "passed",
+    "single_root": "pod-simple-checkout/",
+    "source_and_installed_match": "passed",
+    "metadata_versions": "1.2.1"
+  },
+  "native_attributes_unchanged": [
+    "id",
+    "name",
+    "type",
+    "value",
+    "data-value"
+  ],
+  "gateway_specific_and_dynamic_labels": "preserved",
+  "custom_sdk_and_structured_markup": "excluded",
+  "real_gateway_sdk_or_payment_tested": false,
+  "theme_and_checkout_processing_changed": false,
+  "production_modified": false,
+  "ci_pass_claimed": false,
+  "ci_note": "Fresh PR CI status is recorded on the PR; prior lock does not prove a new run cause."
+}
